@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    display: inline-block;
+}
+
+.inner-container {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 20px;
+}
+
+.timer {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.health {
+    background-color: yellow;
+    height: 30px;
+    width: 100%;
+}
+
+.healthback {
+    position: absolute;
+    background: blue;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.enemyback {
+    left: 0;
+}
+
+.playerback {
+    width: 100%;
+}
+
+.healthui {
+    position: relative;
+    height: 30px;
+    width: 100%;
+}
+
+#player {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tie {
+    position: absolute;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
