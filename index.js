@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
-const gravity = 0.7
+const gravity = 0.2
 
 canvas.width = 1024
 canvas.height = 576
@@ -28,6 +28,14 @@ const player = new Fighter({
     offset: {
         x: 0,
         y: 0
+    },
+    imageSrc: './assets/knight/knightIdle.png',
+    framesMax: 15,
+    scale: 3,
+    framesHold: 20,
+    offset: {
+        x: 70,
+        y: -10
     }
 })
 
@@ -75,25 +83,25 @@ function animate() {
     background.update()
 
     player.update()
-    enemy.update()
+    //enemy.update()
 
     player.velocity.x = 0
     enemy.velocity.x = 0
 
     //player1 movement
     if (keys.d.pressed && player.lastKey === 'd') {
-        player.velocity.x = 5
+        player.velocity.x = 3
     }
     else if (keys.a.pressed && player.lastKey === 'a') {
-        player.velocity.x = -5
+        player.velocity.x = -3
     }
 
     //player2 movement
     if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-        enemy.velocity.x = 5
+        enemy.velocity.x = 3
     }
     else if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-        enemy.velocity.x = -5
+        enemy.velocity.x = -3
     }
 
     //detect for collisions
@@ -140,7 +148,7 @@ window.addEventListener('keydown', (event) => {
             player.lastKey = 'a'
         break
         case 'w':
-            player.velocity.y = -20
+            player.velocity.y = -10
         break
         case ' ':
             player.attack()
@@ -155,7 +163,7 @@ window.addEventListener('keydown', (event) => {
             enemy.lastKey = 'ArrowLeft'
         break
         case 'ArrowUp':
-            enemy.velocity.y = -20
+            enemy.velocity.y = -10
         break
         case 'ArrowDown':
             enemy.attack()
