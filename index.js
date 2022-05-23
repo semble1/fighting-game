@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
-const gravity = 0.2
+const gravity = 0.05
 
 canvas.width = 1024
 canvas.height = 576
@@ -30,21 +30,29 @@ const player = new Fighter({
         y: 0
     },
     imageSrc: './assets/knight/knightIdle.png',
-    framesMax: 15,
+    framesMax: 10,
     scale: 3,
     framesHold: 20,
     offset: {
-        x: 70,
-        y: -10
+        x: 130,
+        y: 100
     },
     sprites: {
         idle: {
             imageSrc: './assets/knight/knightIdle.png',
-            framesMax: 15
+            framesMax: 10
         },
         run: {
             imageSrc: './assets/knight/knightRun.png',
-            framesMax: 8
+            framesMax: 10
+        },
+        jump: {
+            imageSrc: './assets/knight/knightJump.png',
+            framesMax: 3
+        },
+        fall: {
+            imageSrc: './assets/knight/knightFall.png',
+            framesMax: 3
         }
     }
 })
@@ -99,25 +107,33 @@ function animate() {
     enemy.velocity.x = 0
 
     //player1 movement
-    player.image = player.sprites.idle.image
-    player.framesMax = player.sprites.idle.framesMax
+    
     if (keys.d.pressed && player.lastKey === 'd') {
-        player.velocity.x = 3
-        player.image = player.sprites.run.image
-        player.framesMax = player.sprites.run.framesMax
+        player.velocity.x = 2
+        player.switchSprite('run')
     }
     else if (keys.a.pressed && player.lastKey === 'a') {
-        player.velocity.x = -3
-        player.image = player.sprites.run.image
-        player.framesMax = player.sprites.run.framesMax
+        player.velocity.x = -2
+        player.switchSprite('run')
+    }
+    else {
+        player.switchSprite('idle')
+    }
+
+    //jumping
+    if (player.velocity.y < 0) {
+        player.switchSprite('jump')
+    }
+    else if (player.velocity.y > 0) {
+        player.switchSprite('fall')
     }
 
     //player2 movement
     if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-        enemy.velocity.x = 3
+        enemy.velocity.x = 2
     }
     else if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-        enemy.velocity.x = -3
+        enemy.velocity.x = -2
     }
 
     //detect for collisions
@@ -164,7 +180,7 @@ window.addEventListener('keydown', (event) => {
             player.lastKey = 'a'
         break
         case 'w':
-            player.velocity.y = -10
+            player.velocity.y = -5
         break
         case ' ':
             player.attack()
