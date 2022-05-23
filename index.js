@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
-const gravity = 0.05
+const gravity = 0.9
 
 canvas.width = 1024
 canvas.height = 576
@@ -32,7 +32,7 @@ const player = new Fighter({
     imageSrc: './assets/knight/knightIdle.png',
     framesMax: 10,
     scale: 3,
-    framesHold: 20,
+    framesHold: 3,
     offset: {
         x: 130,
         y: 100
@@ -53,6 +53,10 @@ const player = new Fighter({
         fall: {
             imageSrc: './assets/knight/knightFall.png',
             framesMax: 3
+        },
+        attack1: {
+            imageSrc: './assets/knight/knightAttack1.png',
+            framesMax: 4
         }
     }
 })
@@ -109,11 +113,11 @@ function animate() {
     //player1 movement
     
     if (keys.d.pressed && player.lastKey === 'd') {
-        player.velocity.x = 2
+        player.velocity.x = 10
         player.switchSprite('run')
     }
     else if (keys.a.pressed && player.lastKey === 'a') {
-        player.velocity.x = -2
+        player.velocity.x = -10
         player.switchSprite('run')
     }
     else {
@@ -130,10 +134,10 @@ function animate() {
 
     //player2 movement
     if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-        enemy.velocity.x = 2
+        enemy.velocity.x = 10
     }
     else if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-        enemy.velocity.x = -2
+        enemy.velocity.x = -10
     }
 
     //detect for collisions
@@ -180,7 +184,7 @@ window.addEventListener('keydown', (event) => {
             player.lastKey = 'a'
         break
         case 'w':
-            player.velocity.y = -5
+            player.velocity.y = -20
         break
         case ' ':
             player.attack()
@@ -195,7 +199,7 @@ window.addEventListener('keydown', (event) => {
             enemy.lastKey = 'ArrowLeft'
         break
         case 'ArrowUp':
-            enemy.velocity.y = -10
+            enemy.velocity.y = -20
         break
         case 'ArrowDown':
             enemy.attack()
