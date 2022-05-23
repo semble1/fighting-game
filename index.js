@@ -36,6 +36,16 @@ const player = new Fighter({
     offset: {
         x: 70,
         y: -10
+    },
+    sprites: {
+        idle: {
+            imageSrc: './assets/knight/knightIdle.png',
+            framesMax: 15
+        },
+        run: {
+            imageSrc: './assets/knight/knightRun.png',
+            framesMax: 8
+        }
     }
 })
 
@@ -89,11 +99,17 @@ function animate() {
     enemy.velocity.x = 0
 
     //player1 movement
+    player.image = player.sprites.idle.image
+    player.framesMax = player.sprites.idle.framesMax
     if (keys.d.pressed && player.lastKey === 'd') {
         player.velocity.x = 3
+        player.image = player.sprites.run.image
+        player.framesMax = player.sprites.run.framesMax
     }
     else if (keys.a.pressed && player.lastKey === 'a') {
         player.velocity.x = -3
+        player.image = player.sprites.run.image
+        player.framesMax = player.sprites.run.framesMax
     }
 
     //player2 movement
