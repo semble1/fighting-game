@@ -61,6 +61,10 @@ const player = new Fighter({
         attack2: {
             imageSrc: './assets/knight/knightAttack2.png',
             framesMax: 6
+        },
+        slide: {
+            imageSrc: './assets/knight/knightSlide.png',
+            framesMax: 4
         }
     }
 })
@@ -125,6 +129,11 @@ function animate() {
     }
     else {
         player.switchSprite('idle')
+    }
+
+    if (keys.d.pressed && player.lastKey === 'a') {
+        player.velocity.x = 20
+        player.switchSprite('slide')
     }
 
     //jumping
