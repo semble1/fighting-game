@@ -57,6 +57,10 @@ const player = new Fighter({
         attack1: {
             imageSrc: './assets/knight/knightAttack1.png',
             framesMax: 4
+        },
+        attack2: {
+            imageSrc: './assets/knight/knightAttack2.png',
+            framesMax: 6
         }
     }
 })
@@ -111,7 +115,6 @@ function animate() {
     enemy.velocity.x = 0
 
     //player1 movement
-    
     if (keys.d.pressed && player.lastKey === 'd') {
         player.velocity.x = 10
         player.switchSprite('run')

@@ -53,6 +53,8 @@ class Sprite {
     }
 }
 
+let counter = 0;
+
 class Fighter extends Sprite{
     constructor({
         position, 
@@ -121,7 +123,15 @@ class Fighter extends Sprite{
     }
 
     attack() {
-        this.switchSprite('attack1')
+        counter += 1
+        console.log(counter)
+        if (counter % 2 === 0) {
+            this.switchSprite('attack1')
+        }
+        else {
+            this.switchSprite('attack2')
+        }
+        
         this.isAttacking = true
         setTimeout(() => {
             this.isAttacking = false
@@ -130,6 +140,7 @@ class Fighter extends Sprite{
 
     switchSprite(sprite) {
         if (this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax - 1) return
+        else if (this.image === this.sprites.attack2.image && this.framesCurrent < this.sprites.attack2.framesMax - 1) return
 
         switch (sprite) {
             case 'idle':
@@ -164,6 +175,13 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.attack1.image) {
                     this.image = this.sprites.attack1.image
                     this.framesMax = this.sprites.attack1.framesMax
+                    this.framesCurrent = 0
+                }
+                break
+            case 'attack2':
+                if (this.image !== this.sprites.attack2.image) {
+                    this.image = this.sprites.attack2.image
+                    this.framesMax = this.sprites.attack2.framesMax
                     this.framesCurrent = 0
                 }
                 break
