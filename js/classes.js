@@ -64,7 +64,7 @@ class Fighter extends Sprite{
         scale = 1, 
         framesMax = 1,
         offset = { x: 0, y: 0},
-        framesHold = 15,
+        framesHold = 3,
         sprites
     }) {
         super({
@@ -124,7 +124,6 @@ class Fighter extends Sprite{
 
     attack() {
         counter += 1
-        console.log(counter)
         if (counter % 2 === 0) {
             this.switchSprite('attack1')
         }
@@ -141,6 +140,9 @@ class Fighter extends Sprite{
     switchSprite(sprite) {
         if (this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax - 1) return
         else if (this.image === this.sprites.attack2.image && this.framesCurrent < this.sprites.attack2.framesMax - 1) return
+        else if (this.image === this.sprites.roll.image && this.framesCurrent < this.sprites.roll.framesMax - 1) return
+
+        this.framesHold = 3
 
         switch (sprite) {
             case 'idle':
@@ -189,6 +191,14 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.slide.image) {
                     this.image = this.sprites.slide.image
                     this.framesMax = this.sprites.slide.framesMax
+                    this.framesCurrent = 0
+                }
+                break
+            case 'roll':
+                if (this.image !== this.sprites.roll.image) {
+                    this.image = this.sprites.roll.image
+                    this.framesMax = this.sprites.roll.framesMax
+                    this.framesHold = this.sprites.roll.framesHold
                     this.framesCurrent = 0
                 }
                 break

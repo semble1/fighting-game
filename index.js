@@ -65,7 +65,12 @@ const player = new Fighter({
         slide: {
             imageSrc: './assets/knight/knightSlide.png',
             framesMax: 4
-        }
+        },
+        roll: {
+            imageSrc: './assets/knight/knightRoll.png',
+            framesMax: 12,
+            framesHold: 2
+        }        
     }
 })
 
@@ -130,7 +135,8 @@ function animate() {
     else {
         player.switchSprite('idle')
     }
-
+    
+    //slide
     if (keys.d.pressed && player.lastKey === 'a') {
         player.velocity.x = 20
         player.switchSprite('slide')
@@ -200,6 +206,9 @@ window.addEventListener('keydown', (event) => {
         break
         case ' ':
             player.attack()
+        break
+        case 'f':
+            player.switchSprite('roll')
         break
 
         case 'ArrowRight':
