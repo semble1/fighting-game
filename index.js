@@ -70,7 +70,7 @@ const player = new Fighter({
             imageSrc: './assets/knight/knightRoll.png',
             framesMax: 12,
             framesHold: 2
-        }        
+        }     
     }
 })
 
@@ -98,6 +98,9 @@ const keys = {
         pressed: false
     },
     w: {
+        pressed: false
+    },
+    s: {
         pressed: false
     },
     ArrowRight: {
@@ -137,7 +140,7 @@ function animate() {
     }
     
     //slide
-    if (keys.d.pressed && player.lastKey === 'a') {
+    if (keys.s.pressed && player.lastKey === 'd') {
         player.velocity.x = 20
         player.switchSprite('slide')
     }
@@ -201,6 +204,9 @@ window.addEventListener('keydown', (event) => {
             keys.a.pressed = true
             player.lastKey = 'a'
         break
+        case 's':
+            keys.s.pressed = true
+        break
         case 'w':
             player.velocity.y = -20
         break
@@ -236,6 +242,9 @@ window.addEventListener('keyup', (event) => {
         break
         case 'a':
             keys.a.pressed = false
+        break
+        case 's':
+            keys.s.pressed = false
         break
     }
 
