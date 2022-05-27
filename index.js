@@ -87,6 +87,49 @@ const enemy = new Fighter({
     offset: {
         x: -50,
         y: 0
+    },
+    imageSrc: './assets/enemyknight/knightIdle.png',
+    framesMax: 10,
+    scale: 3,
+    framesHold: 3,
+    offset: {
+        x: 130,
+        y: 100
+    },
+    sprites: {
+        idle: {
+            imageSrc: './assets/enemyknight/knightIdle.png',
+            framesMax: 10
+        },
+        run: {
+            imageSrc: './assets/enemyknight/knightRun.png',
+            framesMax: 10
+        },
+        jump: {
+            imageSrc: './assets/enemyknight/knightJump.png',
+            framesMax: 3
+        },
+        fall: {
+            imageSrc: './assets/enemyknight/knightFall.png',
+            framesMax: 3
+        },
+        attack1: {
+            imageSrc: './assets/enemyknight/knightAttack1.png',
+            framesMax: 4
+        },
+        attack2: {
+            imageSrc: './assets/enemyknight/knightAttack2.png',
+            framesMax: 6
+        },
+        slide: {
+            imageSrc: './assets/enemyknight/knightSlide.png',
+            framesMax: 4
+        },
+        roll: {
+            imageSrc: './assets/enemyknight/knightRoll.png',
+            framesMax: 12,
+            framesHold: 2
+        }     
     }
 })
 
@@ -121,7 +164,7 @@ function animate() {
     background.update()
 
     player.update()
-    //enemy.update()
+    enemy.update()
 
     player.velocity.x = 0
     enemy.velocity.x = 0
