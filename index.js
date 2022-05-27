@@ -18,7 +18,7 @@ const background = new Sprite({
 
 const player = new Fighter({
     position: {
-        x: 0,
+        x: 100,
         y: 0
     },
     velocity: {
@@ -76,8 +76,8 @@ const player = new Fighter({
 
 const enemy = new Fighter({
     position: {
-        x: 400,
-        y: 100
+        x: 800,
+        y: 0
     },
     velocity: {
         x: 0,
@@ -90,20 +90,20 @@ const enemy = new Fighter({
     },
     imageSrc: './assets/enemyknight/knightIdle.png',
     framesMax: 10,
-    scale: 3,
+    scale: 3.5,
     framesHold: 3,
     offset: {
         x: 130,
-        y: 100
+        y: 10
     },
     sprites: {
         idle: {
             imageSrc: './assets/enemyknight/knightIdle.png',
-            framesMax: 10
+            framesMax: 6
         },
         run: {
             imageSrc: './assets/enemyknight/knightRun.png',
-            framesMax: 10
+            framesMax: 8
         },
         jump: {
             imageSrc: './assets/enemyknight/knightJump.png',
@@ -115,19 +115,19 @@ const enemy = new Fighter({
         },
         attack1: {
             imageSrc: './assets/enemyknight/knightAttack1.png',
-            framesMax: 4
+            framesMax: 8
         },
         attack2: {
             imageSrc: './assets/enemyknight/knightAttack2.png',
-            framesMax: 6
+            framesMax: 4
         },
         slide: {
             imageSrc: './assets/enemyknight/knightSlide.png',
-            framesMax: 4
+            framesMax: 5
         },
         roll: {
             imageSrc: './assets/enemyknight/knightRoll.png',
-            framesMax: 12,
+            framesMax: 7,
             framesHold: 2
         }     
     }
@@ -182,13 +182,13 @@ function animate() {
         player.switchSprite('idle')
     }
     
-    //slide
+    //player1 slide
     if (keys.s.pressed && player.lastKey === 'd') {
         player.velocity.x = 20
         player.switchSprite('slide')
     }
 
-    //jumping
+    //player1 jump
     if (player.velocity.y < 0) {
         player.switchSprite('jump')
     }
@@ -199,9 +199,28 @@ function animate() {
     //player2 movement
     if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
         enemy.velocity.x = 10
+        enemy.switchSprite('run')
     }
     else if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
         enemy.velocity.x = -10
+        enemy.switchSprite('run')
+    }
+    else {
+        enemy.switchSprite('idle')
+    }
+
+    //player2 slide
+    // if (keys.s.pressed && player.lastKey === 'd') {
+    //     player.velocity.x = 20
+    //     player.switchSprite('slide')
+    // }
+
+    //player2 jump
+    if (enemy.velocity.y < 0) {
+        enemy.switchSprite('jump')
+    }
+    else if (enemy.velocity.y > 0) {
+        enemy.switchSprite('fall')
     }
 
     //detect for collisions
