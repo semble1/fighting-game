@@ -29,10 +29,7 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    imageSrc: './assets/knight/knightIdle.png',
-    framesMax: 10,
     scale: 3,
-    framesHold: 3,
     offset: {
         x: 130,
         y: 100
@@ -40,31 +37,38 @@ const player = new Fighter({
     sprites: {
         idle: {
             imageSrc: './assets/knight/knightIdle.png',
-            framesMax: 10
+            framesMax: 10,
+            framesHold: 4
         },
         run: {
             imageSrc: './assets/knight/knightRun.png',
-            framesMax: 10
+            framesMax: 10,
+            framesHold: 3
         },
         jump: {
             imageSrc: './assets/knight/knightJump.png',
-            framesMax: 3
+            framesMax: 3,
+            framesHold: 3
         },
         fall: {
             imageSrc: './assets/knight/knightFall.png',
-            framesMax: 3
+            framesMax: 3,
+            framesHold: 3
         },
         attack1: {
             imageSrc: './assets/knight/knightAttack1.png',
-            framesMax: 4
+            framesMax: 4,
+            framesHold: 4
         },
         attack2: {
             imageSrc: './assets/knight/knightAttack2.png',
-            framesMax: 6
+            framesMax: 6,
+            framesHold: 4
         },
         slide: {
             imageSrc: './assets/knight/knightSlide.png',
-            framesMax: 4
+            framesMax: 2,
+            framesHold: 3
         },
         roll: {
             imageSrc: './assets/knight/knightRoll.png',
@@ -88,10 +92,7 @@ const enemy = new Fighter({
         x: -50,
         y: 0
     },
-    imageSrc: './assets/enemyknight/knightIdle.png',
-    framesMax: 10,
     scale: 3.5,
-    framesHold: 3,
     offset: {
         x: 130,
         y: 10
@@ -99,36 +100,43 @@ const enemy = new Fighter({
     sprites: {
         idle: {
             imageSrc: './assets/enemyknight/knightIdle.png',
-            framesMax: 6
+            framesMax: 6,
+            framesHold: 7
         },
         run: {
             imageSrc: './assets/enemyknight/knightRun.png',
-            framesMax: 8
+            framesMax: 8,
+            framesHold: 5
         },
         jump: {
             imageSrc: './assets/enemyknight/knightJump.png',
-            framesMax: 3
+            framesMax: 3,
+            framesHold: 3
         },
         fall: {
             imageSrc: './assets/enemyknight/knightFall.png',
-            framesMax: 3
+            framesMax: 3,
+            framesHold: 3
         },
         attack1: {
             imageSrc: './assets/enemyknight/knightAttack1.png',
-            framesMax: 8
+            framesMax: 8,
+            framesHold: 3
         },
         attack2: {
             imageSrc: './assets/enemyknight/knightAttack2.png',
-            framesMax: 4
+            framesMax: 4,
+            framesHold: 5
         },
         slide: {
             imageSrc: './assets/enemyknight/knightSlide.png',
-            framesMax: 5
+            framesMax: 2,
+            framesHold: 3
         },
         roll: {
             imageSrc: './assets/enemyknight/knightRoll.png',
             framesMax: 7,
-            framesHold: 2
+            framesHold: 5
         }     
     }
 })
@@ -143,13 +151,28 @@ const keys = {
     w: {
         pressed: false
     },
+    e: {
+        pressed: false
+    },
     s: {
         pressed: false
     },
-    ArrowRight: {
+    i: {
         pressed: false
     },
-    ArrowLeft: {
+    j: {
+        pressed: false
+    },
+    k: {
+        pressed: false
+    },
+    l: {
+        pressed: false
+    },
+    u: {
+        pressed: false
+    },
+    k: {
         pressed: false
     }
 }
@@ -197,11 +220,11 @@ function animate() {
     }
 
     //player2 movement
-    if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
+    if (keys.l.pressed && enemy.lastKey === 'l') {
         enemy.velocity.x = 10
         enemy.switchSprite('run')
     }
-    else if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
+    else if (keys.j.pressed && enemy.lastKey === 'j') {
         enemy.velocity.x = -10
         enemy.switchSprite('run')
     }
@@ -210,10 +233,10 @@ function animate() {
     }
 
     //player2 slide
-    // if (keys.s.pressed && player.lastKey === 'd') {
-    //     player.velocity.x = 20
-    //     player.switchSprite('slide')
-    // }
+    if (keys.k.pressed && enemy.lastKey === 'j') {
+        enemy.velocity.x = -20
+        enemy.switchSprite('slide')
+    }
 
     //player2 jump
     if (enemy.velocity.y < 0) {
@@ -272,26 +295,32 @@ window.addEventListener('keydown', (event) => {
         case 'w':
             player.velocity.y = -20
         break
-        case ' ':
+        case 'e':
             player.attack()
         break
         case 'f':
             player.switchSprite('roll')
         break
 
-        case 'ArrowRight':
-            keys.ArrowRight.pressed = true
-            enemy.lastKey = 'ArrowRight'
+        case 'l':
+            keys.l.pressed = true
+            enemy.lastKey = 'l'
         break
-        case 'ArrowLeft':
-            keys.ArrowLeft.pressed = true
-            enemy.lastKey = 'ArrowLeft'
+        case 'j':
+            keys.j.pressed = true
+            enemy.lastKey = 'j'
         break
-        case 'ArrowUp':
+        case 'i':
             enemy.velocity.y = -20
         break
-        case 'ArrowDown':
+        case 'u':
             enemy.attack()
+        break
+        case 'h':
+            enemy.switchSprite('roll')
+        break
+        case 'k':
+            keys.k.pressed = true
         break
     }
 })
@@ -312,11 +341,14 @@ window.addEventListener('keyup', (event) => {
 
     //player2 keys
     switch (event.key) {
-        case 'ArrowRight':
-            keys.ArrowRight.pressed = false
+        case 'l':
+            keys.l.pressed = false
         break
-        case 'ArrowLeft':
-            keys.ArrowLeft.pressed = false
+        case 'j':
+            keys.j.pressed = false
+        break
+        case 'k':
+            keys.k.pressed = false
         break
     }
 })
