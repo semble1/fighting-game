@@ -71,6 +71,14 @@ const player = new Fighter({
         takeHit: {
             imageSrc: './assets/knight/knightTakeHit.png',
             framesMax: 3
+        },
+        takeHit: {
+            imageSrc: './assets/knight/knightTakeHit.png',
+            framesMax: 3
+        },
+        death: {
+            imageSrc: './assets/knight/knightDeath.png',
+            framesMax: 10
         }
     },
     attackBox: {
@@ -139,6 +147,10 @@ const enemy = new Fighter({
         takeHit: {
             imageSrc: './assets/enemyknight/knightTakeHit.png',
             framesMax: 3
+        },
+        death: {
+            imageSrc: './assets/enemyknight/knightDeath.png',
+            framesMax: 10
         }
     },
     attackBox: {
@@ -305,48 +317,54 @@ function animate() {
 animate()
 
 window.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'd':
-            keys.d.pressed = true
-            player.lastKey = 'd'
-        break
-        case 'a':
-            keys.a.pressed = true
-            player.lastKey = 'a'
-        break
-        case 's':
-            keys.s.pressed = true
-        break
-        case 'w':
-            player.velocity.y = -20
-        break
-        case 'e':
-            player.attack()
-        break
-        case 'f':
-            player.switchSprite('roll')
-        break
+    if (!player.dead) {
+        switch (event.key) {
+            case 'd':
+                keys.d.pressed = true
+                player.lastKey = 'd'
+            break
+            case 'a':
+                keys.a.pressed = true
+                player.lastKey = 'a'
+            break
+            case 's':
+                keys.s.pressed = true
+            break
+            case 'w':
+                player.velocity.y = -20
+            break
+            case 'e':
+                player.attack()
+            break
+            case 'f':
+                player.switchSprite('roll')
+            break
+        }
+    }
 
-        case 'l':
-            keys.l.pressed = true
-            enemy.lastKey = 'l'
-        break
-        case 'j':
-            keys.j.pressed = true
-            enemy.lastKey = 'j'
-        break
-        case 'i':
-            enemy.velocity.y = -20
-        break
-        case 'u':
-            enemy.attack()
-        break
-        case 'h':
-            enemy.switchSprite('roll')
-        break
-        case 'k':
-            keys.k.pressed = true
-        break
+    if (!enemy.dead) {
+        switch (event.key) {
+            case 'l':
+                keys.l.pressed = true
+                enemy.lastKey = 'l'
+            break
+            case 'j':
+                keys.j.pressed = true
+                enemy.lastKey = 'j'
+            break
+            case 'i':
+                enemy.velocity.y = -20
+            break
+            case 'u':
+                enemy.attack()
+            break
+            case 'h':
+                enemy.switchSprite('roll')
+            break
+            case 'k':
+                keys.k.pressed = true
+            break
+        }
     }
 })
 
