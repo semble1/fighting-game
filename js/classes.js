@@ -148,7 +148,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.idle.image) {
                     this.image = this.sprites.idle.image
                     this.framesMax = this.sprites.idle.framesMax
-                    this.framesHold = this.sprites.idle.framesHold
+                    //this.framesHold = this.sprites.idle.framesHold
                     this.framesCurrent = 0
                 }
                 break
@@ -156,7 +156,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.run.image) {
                     this.image = this.sprites.run.image
                     this.framesMax = this.sprites.run.framesMax
-                    this.framesHold = this.sprites.run.framesHold
+                    //this.framesHold = this.sprites.run.framesHold
                     this.framesCurrent = 0
                 }
                 break
@@ -164,7 +164,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.jump.image) {
                     this.image = this.sprites.jump.image
                     this.framesMax = this.sprites.jump.framesMax
-                    this.framesHold = this.sprites.jump.framesHold
+                    //this.framesHold = this.sprites.jump.framesHold
                     this.framesCurrent = 0
                 }
                 break
@@ -172,7 +172,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.fall.image) {
                     this.image = this.sprites.fall.image
                     this.framesMax = this.sprites.fall.framesMax
-                    this.framesHold = this.sprites.fall.framesHold
+                    //this.framesHold = this.sprites.fall.framesHold
                     this.framesCurrent = 0
                 }
                 break
@@ -180,7 +180,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.attack1.image) {
                     this.image = this.sprites.attack1.image
                     this.framesMax = this.sprites.attack1.framesMax
-                    this.framesHold = this.sprites.attack1.framesHold
+                    //this.framesHold = this.sprites.attack1.framesHold
                     this.framesCurrent = 0
                 }
                 break
@@ -188,7 +188,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.attack2.image) {
                     this.image = this.sprites.attack2.image
                     this.framesMax = this.sprites.attack2.framesMax
-                    this.framesHold = this.sprites.attack2.framesHold
+                    //this.framesHold = this.sprites.attack2.framesHold
                     this.framesCurrent = 0
                 }
                 break
@@ -196,7 +196,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.slide.image) {
                     this.image = this.sprites.slide.image
                     this.framesMax = this.sprites.slide.framesMax
-                    this.framesHold = this.sprites.slide.framesHold
+                    //this.framesHold = this.sprites.slide.framesHold
                     this.framesCurrent = 0
                 }
                 break
@@ -204,7 +204,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.roll.image) {
                     this.image = this.sprites.roll.image
                     this.framesMax = this.sprites.roll.framesMax
-                    this.framesHold = this.sprites.roll.framesHold
+                    //this.framesHold = this.sprites.roll.framesHold
                     this.framesCurrent = 0
                 }
                 break

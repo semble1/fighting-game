@@ -34,46 +34,39 @@ const player = new Fighter({
         x: 130,
         y: 100
     },
+    framesHold: 3,
     sprites: {
         idle: {
             imageSrc: './assets/knight/knightIdle.png',
-            framesMax: 10,
-            framesHold: 4
+            framesMax: 10
         },
         run: {
             imageSrc: './assets/knight/knightRun.png',
-            framesMax: 10,
-            framesHold: 3
+            framesMax: 10
         },
         jump: {
             imageSrc: './assets/knight/knightJump.png',
-            framesMax: 3,
-            framesHold: 3
+            framesMax: 3
         },
         fall: {
             imageSrc: './assets/knight/knightFall.png',
-            framesMax: 3,
-            framesHold: 3
+            framesMax: 3
         },
         attack1: {
             imageSrc: './assets/knight/knightAttack1.png',
-            framesMax: 4,
-            framesHold: 4
+            framesMax: 4
         },
         attack2: {
             imageSrc: './assets/knight/knightAttack2.png',
-            framesMax: 6,
-            framesHold: 4
+            framesMax: 6
         },
         slide: {
             imageSrc: './assets/knight/knightSlide.png',
-            framesMax: 2,
-            framesHold: 3
+            framesMax: 2
         },
         roll: {
             imageSrc: './assets/knight/knightRoll.png',
-            framesMax: 12,
-            framesHold: 2
+            framesMax: 12
         }     
     }
 })
@@ -92,51 +85,44 @@ const enemy = new Fighter({
         x: -50,
         y: 0
     },
-    scale: 3.5,
+    scale: 3,
     offset: {
         x: 130,
-        y: 10
+        y: 100
     },
+    framesHold: 3,
     sprites: {
         idle: {
             imageSrc: './assets/enemyknight/knightIdle.png',
-            framesMax: 6,
-            framesHold: 7
+            framesMax: 10
         },
         run: {
             imageSrc: './assets/enemyknight/knightRun.png',
-            framesMax: 8,
-            framesHold: 5
+            framesMax: 10
         },
         jump: {
             imageSrc: './assets/enemyknight/knightJump.png',
-            framesMax: 3,
-            framesHold: 3
+            framesMax: 3
         },
         fall: {
             imageSrc: './assets/enemyknight/knightFall.png',
-            framesMax: 3,
-            framesHold: 3
+            framesMax: 3
         },
         attack1: {
             imageSrc: './assets/enemyknight/knightAttack1.png',
-            framesMax: 8,
-            framesHold: 3
+            framesMax: 4
         },
         attack2: {
             imageSrc: './assets/enemyknight/knightAttack2.png',
-            framesMax: 4,
-            framesHold: 5
+            framesMax: 6
         },
         slide: {
             imageSrc: './assets/enemyknight/knightSlide.png',
-            framesMax: 2,
-            framesHold: 3
+            framesMax: 2
         },
         roll: {
             imageSrc: './assets/enemyknight/knightRoll.png',
-            framesMax: 7,
-            framesHold: 5
+            framesMax: 12
         }     
     }
 })
