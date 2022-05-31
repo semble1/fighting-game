@@ -68,6 +68,14 @@ const player = new Fighter({
             imageSrc: './assets/knight/knightRoll.png',
             framesMax: 12
         }     
+    },
+    attackBox: {
+        offset: {
+            x: 75,
+            y: 50
+        },
+        width: 90,
+        height: 50
     }
 })
 
@@ -123,7 +131,15 @@ const enemy = new Fighter({
         roll: {
             imageSrc: './assets/enemyknight/knightRoll.png',
             framesMax: 12
-        }     
+        }
+    },
+    attackBox: {
+        offset: {
+            x: -95,
+            y: 50
+        },
+        width: 120,
+        height: 50
     }
 })
 
@@ -238,11 +254,16 @@ function animate() {
             rectangle1: player,
             rectangle2: enemy
         }) && 
-        player.isAttacking) {
+        player.isAttacking && player.framesCurrent === 2) {
         player.isAttacking = false
 
         enemy.health -= 20
         document.querySelector('#enemyHealth').style.width = enemy.health + '%'
+    }
+
+    //if player1 misses
+    if (player.isAttacking && player.framesCurrent === 2) {
+        player.isAttacking = false
     }
 
     if (
@@ -250,11 +271,16 @@ function animate() {
             rectangle1: enemy,
             rectangle2: player
         }) && 
-        enemy.isAttacking) {
+        enemy.isAttacking && enemy.framesCurrent === 2) {
         enemy.isAttacking = false
 
         player.health -= 20
         document.querySelector('#playerHealth').style.width = player.health + '%'
+    }
+
+    //if player2 misses
+    if (enemy.isAttacking && enemy.framesCurrent === 2) {
+        enemy.isAttacking = false
     }
 
     //end game based on health
