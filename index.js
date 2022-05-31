@@ -67,7 +67,11 @@ const player = new Fighter({
         roll: {
             imageSrc: './assets/knight/knightRoll.png',
             framesMax: 12
-        }     
+        },
+        takeHit: {
+            imageSrc: './assets/knight/knightTakeHit.png',
+            framesMax: 3
+        }
     },
     attackBox: {
         offset: {
@@ -131,6 +135,10 @@ const enemy = new Fighter({
         roll: {
             imageSrc: './assets/enemyknight/knightRoll.png',
             framesMax: 12
+        },
+        takeHit: {
+            imageSrc: './assets/enemyknight/knightTakeHit.png',
+            framesMax: 3
         }
     },
     attackBox: {
@@ -248,16 +256,18 @@ function animate() {
         enemy.switchSprite('fall')
     }
 
-    //detect for collisions
+    //detect for collisions & player 2 gets hit
     if (
         rectangularCollision({
             rectangle1: player,
             rectangle2: enemy
         }) && 
-        player.isAttacking && player.framesCurrent === 2) {
+        player.isAttacking && 
+        player.framesCurrent === 2)
+        {
+        enemy.takeHit()
         player.isAttacking = false
 
-        enemy.health -= 20
         document.querySelector('#enemyHealth').style.width = enemy.health + '%'
     }
 
@@ -266,15 +276,18 @@ function animate() {
         player.isAttacking = false
     }
 
+    //detect for collisions & player 1 gets hit
     if (
         rectangularCollision({
             rectangle1: enemy,
             rectangle2: player
         }) && 
-        enemy.isAttacking && enemy.framesCurrent === 2) {
+        enemy.isAttacking && 
+        enemy.framesCurrent === 2) 
+        {
+        player.takeHit()
         enemy.isAttacking = false
 
-        player.health -= 20
         document.querySelector('#playerHealth').style.width = player.health + '%'
     }
 
