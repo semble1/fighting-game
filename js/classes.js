@@ -91,6 +91,7 @@ class Fighter extends Sprite{
         }
         this.color = color
         this.isAttacking
+        this.isRolling = false
         this.health = 100
         this.framesCurrent = 0
         this.framesElapsed = 0
@@ -141,6 +142,18 @@ class Fighter extends Sprite{
         }
         
         this.isAttacking = true
+    }
+
+    roll() {
+        setTimeout(() => {
+            this.isRolling = true
+        }, 50)
+        
+        this.switchSprite('roll')
+
+        setTimeout(() => {
+            this.isRolling = false
+        }, 550)
     }
 
     takeHit() {

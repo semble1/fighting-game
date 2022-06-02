@@ -275,7 +275,8 @@ function animate() {
             rectangle2: enemy
         }) && 
         player.isAttacking && 
-        player.framesCurrent === 2)
+        player.framesCurrent === 2 &&
+        enemy.isRolling === false)
         {
         enemy.takeHit()
         player.isAttacking = false
@@ -295,7 +296,8 @@ function animate() {
             rectangle2: player
         }) && 
         enemy.isAttacking && 
-        enemy.framesCurrent === 2) 
+        enemy.framesCurrent === 2 &&
+        player.isRolling === false) 
         {
         player.takeHit()
         enemy.isAttacking = false
@@ -337,7 +339,7 @@ window.addEventListener('keydown', (event) => {
                 player.attack()
             break
             case 'f':
-                player.switchSprite('roll')
+                player.roll()
             break
         }
     }
@@ -359,7 +361,7 @@ window.addEventListener('keydown', (event) => {
                 enemy.attack()
             break
             case 'h':
-                enemy.switchSprite('roll')
+                enemy.roll()
             break
             case 'k':
                 keys.k.pressed = true
