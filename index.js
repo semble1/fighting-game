@@ -13,7 +13,7 @@ const background = new Sprite({
         x: 0,
         y: 0
     },
-    imageSrc: './assets/background.png'
+    imageSrc: './assets/background.png',
 })
 
 const player = new Fighter({
@@ -334,6 +334,7 @@ window.addEventListener('keydown', (event) => {
             break
             case 'w':
                 player.velocity.y = -20
+                jump.play()
             break
             case 'e':
                 player.attack()
@@ -354,17 +355,18 @@ window.addEventListener('keydown', (event) => {
                 keys.j.pressed = true
                 enemy.lastKey = 'j'
             break
+            case 'k':
+                keys.k.pressed = true
+            break
             case 'i':
                 enemy.velocity.y = -20
+                jump.play()
             break
             case 'u':
                 enemy.attack()
             break
             case 'h':
                 enemy.roll()
-            break
-            case 'k':
-                keys.k.pressed = true
             break
         }
     }

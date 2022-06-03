@@ -142,14 +142,16 @@ class Fighter extends Sprite{
         }
         
         this.isAttacking = true
+        sword.play()
     }
 
     roll() {
         setTimeout(() => {
             this.isRolling = true
-        }, 50)
+        }, 30)
         
         this.switchSprite('roll')
+        rolling.play()
 
         setTimeout(() => {
             this.isRolling = false
@@ -158,6 +160,7 @@ class Fighter extends Sprite{
 
     takeHit() {
         this.health -= 20
+        hit.play()
 
         if (this.health <= 0) {
             this.switchSprite('death')
