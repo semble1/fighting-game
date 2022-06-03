@@ -1,7 +1,13 @@
 const music = new Howl({
     src: ['./assets/sounds/background.wav'],
     loop: true,
-    volume: 0.005,
+    autoplay: true,
+    volume: 0.003,
+    onplayerror: function() {
+        music.once('unlock', function() {
+            music.play()
+        })
+    }
 })
 
 music.play()
