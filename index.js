@@ -333,8 +333,13 @@ window.addEventListener('keydown', (event) => {
                 keys.s.pressed = true
             break
             case 'w':
-                player.velocity.y = -10
-                jump.play()
+                if (player.velocity.y != 0) {
+                    return
+                }
+                else {
+                    player.velocity.y = -10
+                    jump.play()
+                }
             break
             case 'e':
                 player.attack()
@@ -359,8 +364,13 @@ window.addEventListener('keydown', (event) => {
                 keys.k.pressed = true
             break
             case 'i':
-                enemy.velocity.y = -10
-                jump.play()
+                if (enemy.velocity.y != 0) {
+                    return
+                }
+                else {
+                    enemy.velocity.y = -10
+                    jump.play()
+                }
             break
             case 'u':
                 enemy.attack()
