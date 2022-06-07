@@ -16,7 +16,7 @@
 }
 
 .timer {
-    background-color: red;
+    background-color: rgba(0, 0, 0, 0);
     width: 100px;
     height: 100px;
     flex-shrink: 0;
@@ -26,7 +26,7 @@
 }
 
 .health {
-    background-color: yellow;
+    background-color: red;
     height: 30px;
     width: 100%;
 }

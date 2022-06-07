@@ -130,6 +130,14 @@ class Fighter extends Sprite{
         else {
             this.velocity.y += gravity
         }
+
+        //boundary boxes
+        if (this.position.x <= 0){
+            this.position.x = 0
+        }
+        else if (this.position.x >= 924) {
+            this.position.x = 924
+        }
     }
 
     attack() {
