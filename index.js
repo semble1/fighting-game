@@ -208,6 +208,10 @@ function animate() {
 
     background.update()
 
+    //white contrast on background
+    ctx.fillStyle = 'rgba(255,255,255, 0.05)'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
     player.update()
     enemy.update()
 
@@ -281,7 +285,10 @@ function animate() {
         enemy.takeHit()
         player.isAttacking = false
 
-        document.querySelector('#enemyHealth').style.width = enemy.health + '%'
+        //animate health bar damage
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%'
+        })
     }
 
     //if player1 misses
@@ -302,7 +309,10 @@ function animate() {
         player.takeHit()
         enemy.isAttacking = false
 
-        document.querySelector('#playerHealth').style.width = player.health + '%'
+        //animate health bar damage
+        gsap.to('#playerHealth', {
+            width: player.health + '%'
+        })
     }
 
     //if player2 misses
