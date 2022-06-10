@@ -1,6 +1,8 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
+const choose = document.querySelector('.switch')
+
 const gravity = 0.9
 
 canvas.width = 1024
@@ -203,6 +205,7 @@ decreaseTimer()
 
 function animate() {
     window.requestAnimationFrame(animate)
+
     ctx.fillStyle = 'black'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
