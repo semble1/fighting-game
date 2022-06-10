@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
-const gravity = 0.2
+const gravity = 0.9
 
 canvas.width = 1024
 canvas.height = 576
@@ -34,7 +34,7 @@ const player = new Fighter({
         x: 130,
         y: 100
     },
-    framesHold: 15,
+    framesHold: 3,
     sprites: {
         idle: {
             imageSrc: './assets/knight/knightIdle.png',
@@ -110,7 +110,7 @@ const enemy = new Fighter({
         x: 130,
         y: 100
     },
-    framesHold: 15,
+    framesHold: 3,
     sprites: {
         idle: {
             imageSrc: './assets/enemyknight/knightIdle.png',
@@ -220,11 +220,11 @@ function animate() {
 
     //player1 movement
     if (keys.d.pressed && player.lastKey === 'd') {
-        player.velocity.x = 3
+        player.velocity.x = 7
         player.switchSprite('run')
     }
     else if (keys.a.pressed && player.lastKey === 'a') {
-        player.velocity.x = -3
+        player.velocity.x = -7
         player.switchSprite('run')
     }
     else {
@@ -233,7 +233,7 @@ function animate() {
     
     //player1 slide
     if (keys.s.pressed && player.lastKey === 'd') {
-        player.velocity.x = 7
+        player.velocity.x = 15
         player.switchSprite('slide')
     }
 
@@ -247,11 +247,11 @@ function animate() {
 
     //player2 movement
     if (keys.l.pressed && enemy.lastKey === 'l') {
-        enemy.velocity.x = 3
+        enemy.velocity.x = 7
         enemy.switchSprite('run')
     }
     else if (keys.j.pressed && enemy.lastKey === 'j') {
-        enemy.velocity.x = -3
+        enemy.velocity.x = -7
         enemy.switchSprite('run')
     }
     else {
@@ -260,7 +260,7 @@ function animate() {
 
     //player2 slide
     if (keys.k.pressed && enemy.lastKey === 'j') {
-        enemy.velocity.x = -7
+        enemy.velocity.x = -15
         enemy.switchSprite('slide')
     }
 
@@ -347,7 +347,7 @@ window.addEventListener('keydown', (event) => {
                     return
                 }
                 else {
-                    player.velocity.y = -10
+                    player.velocity.y = -20
                     jump.play()
                 }
             break
@@ -378,7 +378,7 @@ window.addEventListener('keydown', (event) => {
                     return
                 }
                 else {
-                    enemy.velocity.y = -10
+                    enemy.velocity.y = -20
                     jump.play()
                 }
             break
