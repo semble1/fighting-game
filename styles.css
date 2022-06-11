@@ -77,7 +77,7 @@
     display: none;
 }
 
-.knight {
+.characters {
     position: absolute;
     justify-content: center;
     align-items: center;

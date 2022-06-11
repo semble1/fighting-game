@@ -1,8 +1,6 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
-const knight = document.querySelector('.knight')
-
 const gravity = 0.9
 
 canvas.width = 1024
@@ -31,58 +29,6 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    scale: 3,
-    offset: {
-        x: 130,
-        y: 100
-    },
-    framesHold: 3,
-    // sprites: {
-    //     idle: {
-    //         imageSrc: './assets/knight/knightIdle.png',
-    //         framesMax: 10
-    //     },
-    //     run: {
-    //         imageSrc: './assets/knight/knightRun.png',
-    //         framesMax: 10
-    //     },
-    //     jump: {
-    //         imageSrc: './assets/knight/knightJump.png',
-    //         framesMax: 3
-    //     },
-    //     fall: {
-    //         imageSrc: './assets/knight/knightFall.png',
-    //         framesMax: 3
-    //     },
-    //     attack1: {
-    //         imageSrc: './assets/knight/knightAttack1.png',
-    //         framesMax: 4
-    //     },
-    //     attack2: {
-    //         imageSrc: './assets/knight/knightAttack2.png',
-    //         framesMax: 6
-    //     },
-    //     slide: {
-    //         imageSrc: './assets/knight/knightSlide.png',
-    //         framesMax: 2
-    //     },
-    //     roll: {
-    //         imageSrc: './assets/knight/knightRoll.png',
-    //         framesMax: 12
-    //     },
-    //     takeHit: {
-    //         imageSrc: './assets/knight/knightTakeHit.png',
-    //         framesMax: 3
-    //     },
-    //     takeHit: {
-    //         imageSrc: './assets/knight/knightTakeHit.png',
-    //         framesMax: 3
-    //     },
-    //     death: {
-    //         imageSrc: './assets/knight/knightDeath.png',
-    //         framesMax: 10
-    //     }
-    // },
     attackBox: {
         offset: {
             x: 45,
@@ -102,7 +48,6 @@ const enemy = new Fighter({
         x: 0,
         y: 0
     },
-    color: 'blue',
     offset: {
         x: -50,
         y: 0
@@ -330,16 +275,6 @@ function animate() {
 }
 
 backgroundAnimate()
-
-knight.onclick = function() {
-    player.sprites = knightSprites
-    for (const sprite in player.sprites) {
-        knightSprites[sprite].image = new Image()
-        knightSprites[sprite].image.src = knightSprites[sprite].imageSrc
-    }
-    knight.remove()
-    animate()
-}
 
 window.addEventListener('keydown', (event) => {
     if (!player.dead) {
