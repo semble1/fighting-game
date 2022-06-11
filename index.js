@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 
-const choose = document.querySelector('.switch')
+const knight = document.querySelector('.knight')
 
 const gravity = 0.9
 
@@ -37,52 +37,52 @@ const player = new Fighter({
         y: 100
     },
     framesHold: 3,
-    sprites: {
-        idle: {
-            imageSrc: './assets/knight/knightIdle.png',
-            framesMax: 10
-        },
-        run: {
-            imageSrc: './assets/knight/knightRun.png',
-            framesMax: 10
-        },
-        jump: {
-            imageSrc: './assets/knight/knightJump.png',
-            framesMax: 3
-        },
-        fall: {
-            imageSrc: './assets/knight/knightFall.png',
-            framesMax: 3
-        },
-        attack1: {
-            imageSrc: './assets/knight/knightAttack1.png',
-            framesMax: 4
-        },
-        attack2: {
-            imageSrc: './assets/knight/knightAttack2.png',
-            framesMax: 6
-        },
-        slide: {
-            imageSrc: './assets/knight/knightSlide.png',
-            framesMax: 2
-        },
-        roll: {
-            imageSrc: './assets/knight/knightRoll.png',
-            framesMax: 12
-        },
-        takeHit: {
-            imageSrc: './assets/knight/knightTakeHit.png',
-            framesMax: 3
-        },
-        takeHit: {
-            imageSrc: './assets/knight/knightTakeHit.png',
-            framesMax: 3
-        },
-        death: {
-            imageSrc: './assets/knight/knightDeath.png',
-            framesMax: 10
-        }
-    },
+    // sprites: {
+    //     idle: {
+    //         imageSrc: './assets/knight/knightIdle.png',
+    //         framesMax: 10
+    //     },
+    //     run: {
+    //         imageSrc: './assets/knight/knightRun.png',
+    //         framesMax: 10
+    //     },
+    //     jump: {
+    //         imageSrc: './assets/knight/knightJump.png',
+    //         framesMax: 3
+    //     },
+    //     fall: {
+    //         imageSrc: './assets/knight/knightFall.png',
+    //         framesMax: 3
+    //     },
+    //     attack1: {
+    //         imageSrc: './assets/knight/knightAttack1.png',
+    //         framesMax: 4
+    //     },
+    //     attack2: {
+    //         imageSrc: './assets/knight/knightAttack2.png',
+    //         framesMax: 6
+    //     },
+    //     slide: {
+    //         imageSrc: './assets/knight/knightSlide.png',
+    //         framesMax: 2
+    //     },
+    //     roll: {
+    //         imageSrc: './assets/knight/knightRoll.png',
+    //         framesMax: 12
+    //     },
+    //     takeHit: {
+    //         imageSrc: './assets/knight/knightTakeHit.png',
+    //         framesMax: 3
+    //     },
+    //     takeHit: {
+    //         imageSrc: './assets/knight/knightTakeHit.png',
+    //         framesMax: 3
+    //     },
+    //     death: {
+    //         imageSrc: './assets/knight/knightDeath.png',
+    //         framesMax: 10
+    //     }
+    // },
     attackBox: {
         offset: {
             x: 45,
@@ -206,17 +206,17 @@ decreaseTimer()
 function animate() {
     window.requestAnimationFrame(animate)
 
-    ctx.fillStyle = 'black'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    // ctx.fillStyle = 'black'
+    // ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    background.update()
+    // background.update()
 
-    //white contrast on background
-    ctx.fillStyle = 'rgba(255,255,255, 0.05)'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    // //white contrast on background
+    // ctx.fillStyle = 'rgba(255,255,255, 0.05)'
+    // ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    player.update()
-    enemy.update()
+    // player.update()
+    // enemy.update()
 
     player.velocity.x = 0
     enemy.velocity.x = 0
@@ -329,7 +329,17 @@ function animate() {
     }
 }
 
-animate()
+backgroundAnimate()
+
+knight.onclick = function() {
+    player.sprites = knightSprites
+    for (const sprite in player.sprites) {
+        knightSprites[sprite].image = new Image()
+        knightSprites[sprite].image.src = knightSprites[sprite].imageSrc
+    }
+    knight.remove()
+    animate()
+}
 
 window.addEventListener('keydown', (event) => {
     if (!player.dead) {

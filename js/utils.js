@@ -33,3 +33,19 @@ function decreaseTimer() {
         determineWinner({player, enemy, timerId})
     }
 }
+
+function backgroundAnimate() {
+    window.requestAnimationFrame(backgroundAnimate)
+
+    ctx.fillStyle = 'black'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    background.update()
+
+    //white contrast on background
+    ctx.fillStyle = 'rgba(255,255,255, 0.05)'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    player.update()
+    enemy.update()
+}
