@@ -150,145 +150,20 @@ decreaseTimer()
 function animate() {
     window.requestAnimationFrame(animate)
 
-    // ctx.fillStyle = 'black'
-    // ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-    // background.update()
-
-    // //white contrast on background
-    // ctx.fillStyle = 'rgba(255,255,255, 0.05)'
-    // ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-    // player.update()
-    // enemy.update()
-
     player.velocity.x = 0
     enemy.velocity.x = 0
 
-    //player1 movement
-    if (keys.d.pressed && player.lastKey === 'd') {
-        player.velocity.x = 7
-        player.switchSprite('run')
-    }
-    else if (keys.a.pressed && player.lastKey === 'a') {
-        player.velocity.x = -7
-        player.switchSprite('run')
-    }
-    else {
-        player.switchSprite('idle')
-    }
-    
-    //player1 slide
-    if (keys.s.pressed && player.lastKey === 'd') {
-        player.velocity.x = 15
-        player.switchSprite('slide')
-    }
+    playerOneMove()
+    playerOneSlide()
+    playerOneJump()
+    playerOneDetect()
+    playerOneMiss()
 
-    //player1 jump
-    if (player.velocity.y < 0) {
-        player.switchSprite('jump')
-    }
-    else if (player.velocity.y > 0) {
-        player.switchSprite('fall')
-    }
-
-    //player2 movement
-    if (keys.l.pressed && enemy.lastKey === 'l') {
-        enemy.velocity.x = 7
-        enemy.switchSprite('run')
-    }
-    else if (keys.j.pressed && enemy.lastKey === 'j') {
-        enemy.velocity.x = -7
-        enemy.switchSprite('run')
-    }
-    else {
-        enemy.switchSprite('idle')
-    }
-
-    //player2 slide
-    if (keys.k.pressed && enemy.lastKey === 'j') {
-        enemy.velocity.x = -15
-        enemy.switchSprite('slide')
-    }
-
-    //player2 jump
-    if (enemy.velocity.y < 0) {
-        enemy.switchSprite('jump')
-    }
-    else if (enemy.velocity.y > 0) {
-        enemy.switchSprite('fall')
-    }
-
-    //detect for collisions & player 2 gets hit
-    if (
-        rectangularCollision({
-            rectangle1: player,
-            rectangle2: enemy
-        }) && 
-        player.isAttacking && 
-        player.framesCurrent === 2 &&
-        player.sprites != rangerSprites &&
-        enemy.isRolling === false)
-        {
-        enemy.takeHit()
-
-        //animate health bar damage
-        gsap.to('#enemyHealth', {
-            width: enemy.health + '%'
-        })
-    }//ranger
-    else if (
-        rectangularCollision({
-            rectangle1: player,
-            rectangle2: enemy
-        }) && 
-        player.isAttacking && 
-        player.framesCurrent === 8 &&
-        player.sprites === rangerSprites &&
-        enemy.isRolling === false)
-        {
-        enemy.takeHit()
-
-        //animate health bar damage
-        gsap.to('#enemyHealth', {
-            width: enemy.health + '%'
-        })
-    }
-
-    //if player1 misses
-    if (player.isAttacking && 
-        player.framesCurrent === 2 && 
-        player.sprites != rangerSprites) {
-        player.isAttacking = false
-    }//ranger
-    else if (player.isAttacking && 
-        player.framesCurrent === 8 && 
-        player.sprites === rangerSprites) {
-        player.isAttacking = false
-    }
-
-    //detect for collisions & player 1 gets hit
-    if (
-        rectangularCollision({
-            rectangle1: enemy,
-            rectangle2: player
-        }) && 
-        enemy.isAttacking && 
-        enemy.framesCurrent === 2 &&
-        player.isRolling === false) 
-        {
-        player.takeHit()
-
-        //animate health bar damage
-        gsap.to('#playerHealth', {
-            width: player.health + '%'
-        })
-    }
-
-    //if player2 misses
-    if (enemy.isAttacking && enemy.framesCurrent === 2) {
-        enemy.isAttacking = false
-    }
+    playerTwoMove()
+    playerTwoSlide()
+    playerTwoJump()
+    playerTwoDetect()
+    playerTwoMiss()
 
     //end game based on health
     if (enemy.health <= 0 || player.health <= 0) {
