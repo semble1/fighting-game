@@ -9,6 +9,7 @@ knight.onclick = function() {
         x: 130,
         y: 100
     }
+    player.attackBox.width = 115
     player.sprites = knightSprites
     for (const sprite in player.sprites) {
         knightSprites[sprite].image = new Image()
@@ -25,6 +26,10 @@ adv.onclick = function() {
         x: 130,
         y: -12
     }
+    player.attackBox.width = 35
+    player.attackBox.offset.x = 50
+    player.offset.x = 30
+    player.position.x = 100
     player.sprites = advSprites
     for (const sprite in player.sprites) {
         advSprites[sprite].image = new Image()

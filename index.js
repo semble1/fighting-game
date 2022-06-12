@@ -34,7 +34,6 @@ const player = new Fighter({
             x: 45,
             y: 50
         },
-        width: 115,
         height: 50
     }
 })
