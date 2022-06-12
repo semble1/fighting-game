@@ -227,10 +227,27 @@ function animate() {
         }) && 
         player.isAttacking && 
         player.framesCurrent === 2 &&
+        player.sprites != rangerSprites &&
         enemy.isRolling === false)
         {
         enemy.takeHit()
-        player.isAttacking = false
+
+        //animate health bar damage
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%'
+        })
+    }//ranger
+    else if (
+        rectangularCollision({
+            rectangle1: player,
+            rectangle2: enemy
+        }) && 
+        player.isAttacking && 
+        player.framesCurrent === 8 &&
+        player.sprites === rangerSprites &&
+        enemy.isRolling === false)
+        {
+        enemy.takeHit()
 
         //animate health bar damage
         gsap.to('#enemyHealth', {
@@ -239,7 +256,14 @@ function animate() {
     }
 
     //if player1 misses
-    if (player.isAttacking && player.framesCurrent === 2) {
+    if (player.isAttacking && 
+        player.framesCurrent === 2 && 
+        player.sprites != rangerSprites) {
+        player.isAttacking = false
+    }//ranger
+    else if (player.isAttacking && 
+        player.framesCurrent === 8 && 
+        player.sprites === rangerSprites) {
         player.isAttacking = false
     }
 
@@ -254,7 +278,6 @@ function animate() {
         player.isRolling === false) 
         {
         player.takeHit()
-        enemy.isAttacking = false
 
         //animate health bar damage
         gsap.to('#playerHealth', {

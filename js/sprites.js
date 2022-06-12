@@ -83,3 +83,50 @@ let advSprites = {
         framesMax: 7
     }
 }
+
+let rangerSprites = {
+    idle: {
+        imageSrc: './assets/ranger/rangerIdle.png',
+        framesMax: 12
+    },
+    run: {
+        imageSrc: './assets/ranger/rangerRun.png',
+        framesMax: 10
+    },
+    jump: {
+        imageSrc: './assets/ranger/rangerJump.png',
+        framesMax: 3
+    },
+    fall: {
+        imageSrc: './assets/ranger/rangerFall.png',
+        framesMax: 3
+    },
+    attack1: {
+        imageSrc: './assets/ranger/rangerAttack1.png',
+        framesMax: 15
+    },
+    attack2: {
+        imageSrc: './assets/ranger/rangerAttack2.png',
+        framesMax: 15
+    },
+    arrow: {
+        imageSrc: './assets/ranger/rangerArrowHit.png',
+        framesMax: 6
+    },
+    slide: {
+        imageSrc: './assets/ranger/rangerSlide.png',
+        framesMax: 4
+    },
+    roll: {
+        imageSrc: './assets/ranger/rangerRoll.png',
+        framesMax: 8
+    },
+    takeHit: {
+        imageSrc: './assets/ranger/rangerTakeHit.png',
+        framesMax: 6
+    },
+    death: {
+        imageSrc: './assets/ranger/rangerDeath.png',
+        framesMax: 19
+    }
+}
