@@ -47,7 +47,7 @@ ranger.onclick = function() {
         x: 130,
         y: 175
     }
-    player.attackBox.width = 350
+    player.attackBox.width = 290
     player.attackBox.offset.x = 100
     player.offset.x = 300
     player.sprites = rangerSprites

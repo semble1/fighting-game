@@ -158,6 +158,7 @@ function animate() {
     playerOneJump()
     playerOneDetect()
     playerOneMiss()
+    rangerSpecial()
 
     playerTwoMove()
     playerTwoSlide()

@@ -61,6 +61,13 @@ function playerOneDetect() {
         enemy.isRolling === false)
         {
         enemy.takeHit()
+        //ranger special (25 dmg)
+        if (
+            player.specialAttack
+        ) {
+            enemy.takeHit(15)
+            player.specialAttack = false
+        }
 
         //animate health bar damage
         gsap.to('#enemyHealth', {
@@ -80,5 +87,13 @@ function playerOneMiss() {
         player.framesCurrent === 8 && 
         player.sprites === rangerSprites) {
         player.isAttacking = false
+    }
+}
+
+function rangerSpecial() {
+    if (keys.s.pressed && player.lastKey === 'a' && player.sprites === rangerSprites) {
+        player.specialAttack = true
+        player.isAttacking = true
+        player.switchSprite('special')
     }
 }

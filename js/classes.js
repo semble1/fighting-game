@@ -91,6 +91,7 @@ class Fighter extends Sprite{
         }
         this.color = color
         this.isAttacking
+        this.specialAttack
         this.isRolling = false
         this.health = 100
         this.framesCurrent = 0
@@ -171,8 +172,8 @@ class Fighter extends Sprite{
         }, 550)
     }
 
-    takeHit() {
-        this.health -= 20
+    takeHit(dmg = 10) {
+        this.health -= dmg
         hit.play()
 
         if (this.health <= 0) {
@@ -195,6 +196,7 @@ class Fighter extends Sprite{
         else if (this.image === this.sprites.attack2.image && this.framesCurrent < this.sprites.attack2.framesMax - 1) return
         else if (this.image === this.sprites.roll.image && this.framesCurrent < this.sprites.roll.framesMax - 1) return
         else if (this.image === this.sprites.slide.image && this.framesCurrent < this.sprites.slide.framesMax - 1) return
+        else if (this.sprites === rangerSprites && this.image === this.sprites.special.image && this.framesCurrent < this.sprites.special.framesMax - 1) return
         else if (this.image === this.sprites.takeHit.image && this.framesCurrent < this.sprites.takeHit.framesMax - 1) return
 
         switch (sprite) {
@@ -243,6 +245,14 @@ class Fighter extends Sprite{
                     this.image = this.sprites.attack2.image
                     this.framesMax = this.sprites.attack2.framesMax
                     //this.framesHold = this.sprites.attack2.framesHold
+                    this.framesCurrent = 0
+                }
+                break
+            case 'special':
+                if (this.image !== this.sprites.special.image) {
+                    this.image = this.sprites.special.image
+                    this.framesMax = this.sprites.special.framesMax
+                    //this.framesHold = this.sprites.special.framesHold
                     this.framesCurrent = 0
                 }
                 break

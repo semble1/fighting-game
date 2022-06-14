@@ -109,9 +109,9 @@ let rangerSprites = {
         imageSrc: './assets/ranger/rangerAttack2.png',
         framesMax: 15
     },
-    arrow: {
-        imageSrc: './assets/ranger/rangerArrowHit.png',
-        framesMax: 6
+    special: {
+        imageSrc: './assets/ranger/rangerSpecial.png',
+        framesMax: 17
     },
     slide: {
         imageSrc: './assets/ranger/rangerSlide.png',
