@@ -92,6 +92,7 @@ class Fighter extends Sprite{
         this.color = color
         this.isAttacking
         this.specialAttack
+        this.lastSprite
         this.isRolling = false
         this.health = 100
         this.framesCurrent = 0
@@ -118,7 +119,7 @@ class Fighter extends Sprite{
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
 
         //draw attack boxes
-        //ctx.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+        ctx.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
 
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
@@ -147,13 +148,6 @@ class Fighter extends Sprite{
     }
 
     attack() {
-        if (counter % 2 === 0) {
-            this.switchSprite('attack1')
-        }
-        else {
-            this.switchSprite('attack2')
-        }
-        
         this.isAttacking = true
         sword.play()
     }
@@ -235,6 +229,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.attack1.image) {
                     this.image = this.sprites.attack1.image
                     this.framesMax = this.sprites.attack1.framesMax
+                    this.lastSprite = this.sprites.attack1
                     //this.framesHold = this.sprites.attack1.framesHold
                     this.framesCurrent = 0
                 }
@@ -243,6 +238,7 @@ class Fighter extends Sprite{
                 if (this.image !== this.sprites.attack2.image) {
                     this.image = this.sprites.attack2.image
                     this.framesMax = this.sprites.attack2.framesMax
+                    this.lastSprite = this.sprites.attack2
                     //this.framesHold = this.sprites.attack2.framesHold
                     this.framesCurrent = 0
                 }

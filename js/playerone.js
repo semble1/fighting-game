@@ -34,48 +34,48 @@ function playerOneJump() {
     }
 }
 
-function playerOneDetect() {
-    //detect for collisions & player 2 gets hit
-    if (
-        rectangularCollision({
-            rectangle1: player,
-            rectangle2: enemy
-        }) && 
-        player.isAttacking && 
-        player.framesCurrent === 2 &&
-        player.sprites != rangerSprites &&
-        enemy.isRolling === false)
-        {
-        enemy.takeHit()
-
-        //animate health bar damage
-        gsap.to('#enemyHealth', {
-            width: enemy.health + '%'
-        })
-    }//ranger
-    else if (
-        rectangularCollision({
-            rectangle1: player,
-            rectangle2: enemy
-        }) && 
-        player.isAttacking && 
-        player.framesCurrent === 8 &&
-        player.sprites === rangerSprites &&
-        enemy.isRolling === false)
-        {
-        enemy.takeHit()
-        //ranger special (25 dmg)
+function knightAttack() {
+    if (player.sprites === knightSprites) {
         if (
-            player.specialAttack
+            rectangularCollision({
+                rectangle1: player,
+                rectangle2: enemy
+            }) &&
+            player.isAttacking &&
+            player.framesCurrent === 4 &&
+            enemy.isRolling === false
         ) {
-            enemy.takeHit(15)
-            player.specialAttack = false
+            if (player.lastSprite === knightSprites.attack1) {
+                enemy.takeHit(5)
+            }
+            else if (player.lastSprite === knightSprites.attack2) {
+                enemy.takeHit(2.5)
+                setTimeout(function() {enemy.takeHit(2.5)}, 200)
+            }
         }
 
         //animate health bar damage
         gsap.to('#enemyHealth', {
             width: enemy.health + '%'
         })
+
+        //if attack misses
+        if (player.isAttacking &&
+            player.framesCurrent === 4) {
+                player.isAttacking = false
+            }
+    }
+}
+
+function knightCombos() {
+    if (player.lastSprite === knightSprites.attack1) {
+        player.attackBox.width = 225
+        player.attackBox.offset.x = -60
+        player.switchSprite('attack2')
+    } else {
+        player.attackBox.width = 115
+        player.attackBox.offset.x = 45
+        player.switchSprite('attack1')
     }
 }
 
@@ -83,7 +83,7 @@ function playerOneMiss() {
     //if player1 misses
     if (player.isAttacking && 
         player.framesCurrent === 2 && 
-        player.sprites != rangerSprites) {
+        player.sprites != knightSprites) {
         player.isAttacking = false
     }//ranger
     else if (player.isAttacking && 

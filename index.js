@@ -156,8 +156,9 @@ function animate() {
     playerOneMove()
     playerOneSlide()
     playerOneJump()
-    playerOneDetect()
+    //playerOneDetect()
     playerOneMiss()
+    knightAttack()
     rangerSpecial()
 
     playerTwoMove()
@@ -198,6 +199,7 @@ window.addEventListener('keydown', (event) => {
                 }
             break
             case 'e':
+                knightCombos()
                 player.attack()
             break
             case 'f':
