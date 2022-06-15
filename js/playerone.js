@@ -15,7 +15,10 @@ function playerOneMove() {
 
 function playerOneSlide() {
     //player1 slide
-    if (keys.s.pressed && player.lastKey === 'd') {
+    if (keys.s.pressed && 
+        player.lastKey === 'd' && 
+        (player.sprites === priestSprites || 
+        player.sprites === rangerSprites)) {
         player.velocity.x = 15
         player.switchSprite('slide')
     }
