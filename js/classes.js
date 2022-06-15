@@ -118,7 +118,7 @@ class Fighter extends Sprite{
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
 
         //draw attack boxes
-        ctx.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+        //ctx.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
 
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
@@ -147,7 +147,6 @@ class Fighter extends Sprite{
     }
 
     attack() {
-        counter += 1
         if (counter % 2 === 0) {
             this.switchSprite('attack1')
         }
