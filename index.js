@@ -170,6 +170,7 @@ function animate() {
     playerOneMove()
     playerOneSlide()
     playerOneJump()
+    resetCombo()
 
     knightAttack()
     rangerAttack()

@@ -81,6 +81,17 @@ function knightCombos() {
     }
 }
 
+const cancelAnimationFrame = window.cancelAnimationFrame
+
+function poisonArrow() {
+    anim = window.requestAnimationFrame(poisonArrow)
+    poison.position.x = enemy.position.x - 240
+    poison.position.y = enemy.position.y - 50
+    poison.update()
+    
+    setTimeout(function() {cancelAnimationFrame(anim)}, 2400)
+}
+
 function rangerAttack() {
     if (player.sprites === rangerSprites) {
         if (
@@ -96,9 +107,7 @@ function rangerAttack() {
             }
             else if (player.lastSprite === rangerSprites.attack2 && player.framesCurrent === 8) {
                 enemy.takeHit(5)
-                // poison.position.x = enemy.position.x - 240
-                // poison.position.y = enemy.position.y - 50
-                // poison.update()
+                poisonArrow()
             }
         }
 
@@ -129,11 +138,6 @@ function rangerCombos() {
             player.switchSprite('attack1')
         }
     }
-}
-
-function rangerPoison() {
-    poisonSprite[sprite].image = new Image()
-    poisonSprite[sprite].image.src = poisonSprite[sprite].imageSrc
 }
 
 function rangerSpecial() {
