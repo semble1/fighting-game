@@ -92,6 +92,15 @@ function poisonArrow() {
     setTimeout(function() {cancelAnimationFrame(anim)}, 2350)
 }
 
+function tangleArrow() {
+    anim = window.requestAnimationFrame(tangleArrow)
+    tangle.position.x = enemy.position.x - 240
+    tangle.position.y = enemy.position.y - 50
+    tangle.update()
+    
+    setTimeout(function() {cancelAnimationFrame(anim)}, 700)
+}
+
 function rangerAttack() {
     if (player.sprites === rangerSprites) {
         if (
@@ -115,6 +124,17 @@ function rangerAttack() {
                     setTimeout(function() {enemy.takeHit(2)}, 1200)
                     setTimeout(function() {enemy.takeHit(2)}, 1800)
                     poisonArrow()
+                    player.lastKey = 'e'
+            }
+            //tangle arrow
+            else if (player.lastSprite === rangerSprites.attack2 && 
+                player.framesCurrent === 8 && 
+                player.lastKey === 'w') {
+                    enemy.takeHit(10)
+                    setTimeout(function() {
+                        enemy.velocity.x = 100
+                    }, 50)
+                    tangleArrow()
                     player.lastKey = 'e'
             }
             //basic arrow

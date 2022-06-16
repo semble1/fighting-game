@@ -30,6 +30,20 @@ const poison = new Sprite({
     framesMax: 8
 })
 
+const tangle = new Sprite({
+    position: {
+        x: 100,
+        y: 100
+    },
+    offset: {
+        x: 0,
+        y: 0
+    },
+    scale: 2,
+    imageSrc: './assets/ranger/rangerTangle.png',
+    framesMax: 8
+})
+
 const player = new Fighter({
     position: {
         x: 100,
@@ -209,6 +223,7 @@ window.addEventListener('keydown', (event) => {
                 }
                 else {
                     player.velocity.y = -20
+                    player.lastKey = 'w'
                     jump.play()
                 }
             break
