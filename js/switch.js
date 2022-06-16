@@ -107,8 +107,8 @@ monk.onclick = function() {
         x: 130,
         y: 235
     }
-    player.attackBox.width = 290
-    player.attackBox.offset.x = 100
+    player.attackBox.width = 10
+    player.attackBox.offset.x = 80
     player.offset.x = 400
     player.sprites = monkSprites
     for (const sprite in player.sprites) {

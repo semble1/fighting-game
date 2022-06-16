@@ -328,3 +328,46 @@ function shinCombos() {
         }
     }
 }
+
+function monkAttack() {
+    if (player.sprites === monkSprites) {
+        if (
+            rectangularCollision({
+                rectangle1: player,
+                rectangle2: enemy
+            }) &&
+            player.isAttacking &&
+            player.framesCurrent === 2 &&
+            enemy.isRolling === false
+        ) {
+            if (player.lastSprite === monkSprites.attack1) {
+                enemy.takeHit(5)
+            }
+            else if (player.lastSprite === monkSprites.attack2) {
+                enemy.takeHit(5)
+                setTimeout(function() {enemy.takeHit(5)}, 200)
+            }
+        }
+
+        //animate health bar damage
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%'
+        })
+
+        //if attack misses
+        if (player.isAttacking &&
+            player.framesCurrent === 2) {
+                player.isAttacking = false
+            }
+    }
+}
+
+function monkCombos() {
+    if (player.sprites === monkSprites) {
+        if (player.lastSprite === monkSprites.attack1) {
+            player.switchSprite('attack2')
+        } else {
+            player.switchSprite('attack1')
+        }
+    }
+}
