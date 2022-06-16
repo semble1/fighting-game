@@ -187,7 +187,8 @@ class Fighter extends Sprite{
         else if (this.image === this.sprites.attack2.image && this.framesCurrent < this.sprites.attack2.framesMax - 1) return
         else if (this.image === this.sprites.roll.image && this.framesCurrent < this.sprites.roll.framesMax - 1) return
         else if (this.image === this.sprites.slide.image && this.framesCurrent < this.sprites.slide.framesMax - 1) return
-        else if (this.sprites === rangerSprites && this.image === this.sprites.special.image && this.framesCurrent < this.sprites.special.framesMax - 1) return
+        //else if (this.sprites === rangerSprites && this.image === this.sprites.special.image && this.framesCurrent < this.sprites.special.framesMax - 1) return
+        else if (this.sprites === bladeSprites && this.image === this.sprites.attack3.image && this.framesCurrent < this.sprites.attack3.framesMax - 1) return
         else if (this.image === this.sprites.takeHit.image && this.framesCurrent < this.sprites.takeHit.framesMax - 1) return
 
         switch (sprite) {
@@ -238,6 +239,15 @@ class Fighter extends Sprite{
                     this.framesMax = this.sprites.attack2.framesMax
                     this.lastSprite = this.sprites.attack2
                     //this.framesHold = this.sprites.attack2.framesHold
+                    this.framesCurrent = 0
+                }
+                break
+            case 'attack3':
+                if (this.image !== this.sprites.attack3.image) {
+                    this.image = this.sprites.attack3.image
+                    this.framesMax = this.sprites.attack3.framesMax
+                    this.lastSprite = this.sprites.attack3
+                    //this.framesHold = this.sprites.attack3.framesHold
                     this.framesCurrent = 0
                 }
                 break

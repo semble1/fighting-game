@@ -50,8 +50,8 @@ blade.onclick = function() {
         x: 130,
         y: 183
     }
-    player.attackBox.width = 290
-    player.attackBox.offset.x = 100
+    player.attackBox.width = 90
+    player.attackBox.offset.x = 50
     player.offset.x = 300
     player.sprites = bladeSprites
     for (const sprite in player.sprites) {

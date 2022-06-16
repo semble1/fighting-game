@@ -177,5 +177,59 @@ function rangerSpecial() {
         player.specialAttack = true
         player.isAttacking = true
         player.switchSprite('special')
+        keys.s.pressed = false
+    }
+}
+
+function bladeAttack() {
+    if (player.sprites === bladeSprites) {
+        if (
+            rectangularCollision({
+                rectangle1: player,
+                rectangle2: enemy
+            }) &&
+            player.isAttacking &&
+            player.framesCurrent === 2 &&
+            enemy.isRolling === false
+        ) {
+            if (player.lastSprite === bladeSprites.attack1) {
+                enemy.takeHit(5)
+            }
+            else if (player.lastSprite === bladeSprites.attack2) {
+                enemy.takeHit(5)
+            }
+            else if (player.lastSprite === bladeSprites.attack3) {
+                enemy.takeHit(5)
+                setTimeout(function() {enemy.takeHit(1)}, 200)
+                setTimeout(function() {enemy.takeHit(1)}, 300)
+                setTimeout(function() {enemy.takeHit(1)}, 400)
+                setTimeout(function() {enemy.takeHit(1)}, 500)
+                setTimeout(function() {enemy.takeHit(1)}, 600)
+                setTimeout(function() {enemy.takeHit(1)}, 700)
+            }
+        }
+
+        //animate health bar damage
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%'
+        })
+
+        //if attack misses
+        if (player.isAttacking &&
+            player.framesCurrent === 2) {
+                player.isAttacking = false
+            }
+    }
+}
+
+function bladeCombos() {
+    if (player.sprites === bladeSprites) {
+        if (player.lastSprite === bladeSprites.attack1) {
+            player.switchSprite('attack2')
+        } 
+        else if (player.lastSprite === bladeSprites.attack2) {
+            player.switchSprite('attack3')
+        }
+        else {player.switchSprite('attack1')}
     }
 }

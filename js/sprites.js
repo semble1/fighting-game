@@ -113,6 +113,10 @@ let bladeSprites = {
         imageSrc: './assets/blade/bladeAttack2.png',
         framesMax: 5
     },
+    attack3: {
+        imageSrc: './assets/blade/bladeAttack3.png',
+        framesMax: 12
+    },
     slide: {
         imageSrc: './assets/blade/bladeSlide.png',
         framesMax: 8
