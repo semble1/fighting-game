@@ -214,6 +214,7 @@ window.addEventListener('keydown', (event) => {
             case 'a':
                 keys.a.pressed = true
                 player.lastKey = 'a'
+                player.comboKey = 'a'
             break
             case 's':
                 keys.s.pressed = true
@@ -224,7 +225,7 @@ window.addEventListener('keydown', (event) => {
                 }
                 else {
                     player.velocity.y = -20
-                    player.lastKey = 'w'
+                    player.comboKey = 'w'
                     jump.play()
                 }
             break

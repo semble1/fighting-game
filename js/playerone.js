@@ -118,7 +118,7 @@ function rangerAttack() {
             //poison arrow
             else if (player.lastSprite === rangerSprites.attack2 && 
                 player.framesCurrent === 8 && 
-                player.lastKey === 'a') {
+                player.comboKey === 'a') {
                     enemy.takeHit(2)
                     setTimeout(function() {enemy.takeHit(2)}, 600)
                     setTimeout(function() {enemy.takeHit(2)}, 1200)
@@ -129,7 +129,7 @@ function rangerAttack() {
             //tangle arrow
             else if (player.lastSprite === rangerSprites.attack2 && 
                 player.framesCurrent === 8 && 
-                player.lastKey === 'w') {
+                player.comboKey === 'w') {
                     enemy.takeHit(10)
                     setTimeout(function() {
                         enemy.velocity.x = 100

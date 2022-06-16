@@ -78,6 +78,7 @@ class Fighter extends Sprite{
         this.width = 50
         this.height = 150
         this.lastKey
+        this.comboKey
         this.attackBox = {
             position: {
                 x: this.position.x,
