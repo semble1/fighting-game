@@ -124,7 +124,7 @@ function rangerAttack() {
                     setTimeout(function() {enemy.takeHit(2)}, 1200)
                     setTimeout(function() {enemy.takeHit(2)}, 1800)
                     poisonArrow()
-                    player.lastKey = 'e'
+                    player.comboKey = 'e'
             }
             //tangle arrow
             else if (player.lastSprite === rangerSprites.attack2 && 
@@ -135,7 +135,7 @@ function rangerAttack() {
                         enemy.velocity.x = 100
                     }, 50)
                     tangleArrow()
-                    player.lastKey = 'e'
+                    player.comboKey = 'e'
             }
             //basic arrow
             else if (player.lastSprite === rangerSprites.attack2 && player.framesCurrent === 8) {
@@ -231,5 +231,53 @@ function bladeCombos() {
             player.switchSprite('attack3')
         }
         else {player.switchSprite('attack1')}
+    }
+}
+
+function priestAttack() {
+    if (player.sprites === priestSprites) {
+        if (
+            rectangularCollision({
+                rectangle1: player,
+                rectangle2: enemy
+            }) &&
+            player.isAttacking &&
+            enemy.isRolling === false
+        ) {
+            //basic attack
+            if (player.lastSprite === priestSprites.attack1 && player.framesCurrent === 3) {
+                enemy.takeHit(4)
+            }
+            //basic arrow
+            else if (player.lastSprite === priestSprites.attack2 && player.framesCurrent === 11) {
+                enemy.takeHit(6)
+                enemy.velocity.x = 50
+            }
+        }
+
+        //animate health bar damage
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%'
+        })
+
+        //if attack misses
+        if (player.isAttacking) {
+                if (player.lastSprite === priestSprites.attack1 && player.framesCurrent === 3) {
+                    player.isAttacking = false
+                }
+                else if (player.lastSprite === priestSprites.attack2 && player.framesCurrent === 11) {
+                    player.isAttacking = false
+                }
+            }
+    }
+}
+
+function priestCombos() {
+    if (player.sprites === priestSprites) {
+        if (player.lastSprite === priestSprites.attack1) {
+            player.switchSprite('attack2')
+        } else {
+            player.switchSprite('attack1')
+        }
     }
 }

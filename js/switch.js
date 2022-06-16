@@ -69,7 +69,7 @@ priest.onclick = function() {
         x: 130,
         y: 190
     }
-    player.attackBox.width = 290
+    player.attackBox.width = 85
     player.attackBox.offset.x = 100
     player.offset.x = 300
     player.sprites = priestSprites
