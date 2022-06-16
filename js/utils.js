@@ -54,6 +54,6 @@ function resetCombo() {
     if (player.lastSprite === player.sprites.attack1) {
         setTimeout(function() {
             player.lastSprite = player.sprites.attack2
-        }, 1000)
+        }, 1500)
     }
 }

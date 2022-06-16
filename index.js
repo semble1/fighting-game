@@ -136,6 +136,9 @@ const keys = {
     e: {
         pressed: false
     },
+    f: {
+        pressed: false
+    },
     s: {
         pressed: false
     },
@@ -153,9 +156,6 @@ const keys = {
     },
     u: {
         pressed: false
-    },
-    k: {
-        pressed: false
     }
 }
 
@@ -170,7 +170,7 @@ function animate() {
     playerOneMove()
     playerOneSlide()
     playerOneJump()
-    resetCombo()
+    //resetCombo()
 
     knightAttack()
     rangerAttack()
@@ -218,6 +218,7 @@ window.addEventListener('keydown', (event) => {
                 player.attack()
             break
             case 'f':
+                keys.f.pressed = true
                 player.roll()
             break
         }

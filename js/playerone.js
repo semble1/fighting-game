@@ -89,7 +89,7 @@ function poisonArrow() {
     poison.position.y = enemy.position.y - 50
     poison.update()
     
-    setTimeout(function() {cancelAnimationFrame(anim)}, 2400)
+    setTimeout(function() {cancelAnimationFrame(anim)}, 2350)
 }
 
 function rangerAttack() {
@@ -102,12 +102,24 @@ function rangerAttack() {
             player.isAttacking &&
             enemy.isRolling === false
         ) {
+            //basic attack
             if (player.lastSprite === rangerSprites.attack1 && player.framesCurrent === 4) {
                 enemy.takeHit(5)
             }
+            //poison arrow
+            else if (player.lastSprite === rangerSprites.attack2 && 
+                player.framesCurrent === 8 && 
+                player.lastKey === 'a') {
+                    enemy.takeHit(2)
+                    setTimeout(function() {enemy.takeHit(2)}, 600)
+                    setTimeout(function() {enemy.takeHit(2)}, 1200)
+                    setTimeout(function() {enemy.takeHit(2)}, 1800)
+                    poisonArrow()
+                    player.lastKey = 'e'
+            }
+            //basic arrow
             else if (player.lastSprite === rangerSprites.attack2 && player.framesCurrent === 8) {
                 enemy.takeHit(5)
-                poisonArrow()
             }
         }
 
