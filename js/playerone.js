@@ -281,3 +281,50 @@ function priestCombos() {
         }
     }
 }
+
+function shinAttack() {
+    if (player.sprites === shinSprites) {
+        if (
+            rectangularCollision({
+                rectangle1: player,
+                rectangle2: enemy
+            }) &&
+            player.isAttacking &&
+            player.framesCurrent === 2 &&
+            enemy.isRolling === false
+        ) {
+            if (player.lastSprite === shinSprites.attack1) {
+                enemy.takeHit(4)
+            }
+            else if (player.lastSprite === shinSprites.attack2) {
+                setTimeout(function() {enemy.takeHit(2)}, 150)
+                setTimeout(function() {enemy.takeHit(2)}, 250)
+                setTimeout(function() {enemy.takeHit(2)}, 350)
+            }
+        }
+
+        //animate health bar damage
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%'
+        })
+
+        //if attack misses
+        if (player.isAttacking &&
+            player.framesCurrent === 2) {
+                player.isAttacking = false
+            }
+    }
+}
+
+function shinCombos() {
+    if (player.sprites === shinSprites) {
+        if (player.lastSprite === shinSprites.attack1) {
+            player.attackBox.width = 100
+            player.switchSprite('attack2')
+        }
+        else {
+            player.attackBox.width = 25
+            player.switchSprite('attack1')
+        }
+    }
+}

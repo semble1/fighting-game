@@ -190,6 +190,7 @@ function animate() {
     rangerAttack()
     bladeAttack()
     priestAttack()
+    shinAttack()
 
     playerTwoMove()
     playerTwoSlide()
@@ -235,6 +236,7 @@ window.addEventListener('keydown', (event) => {
                 rangerCombos()
                 bladeCombos()
                 priestCombos()
+                shinCombos()
                 player.attack()
             break
             case 'f':

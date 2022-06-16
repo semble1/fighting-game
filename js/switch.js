@@ -88,7 +88,7 @@ shin.onclick = function() {
         x: 130,
         y: 190
     }
-    player.attackBox.width = 290
+    player.attackBox.width = 20
     player.attackBox.offset.x = 100
     player.offset.x = 300
     player.sprites = shinSprites
