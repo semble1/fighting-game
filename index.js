@@ -16,6 +16,20 @@ const background = new Sprite({
     imageSrc: './assets/background.png',
 })
 
+const poison = new Sprite({
+    position: {
+        x: 100,
+        y: 100
+    },
+    offset: {
+        x: 0,
+        y: 0
+    },
+    scale: 2,
+    imageSrc: './assets/ranger/rangerPoison.png',
+    framesMax: 8
+})
+
 const player = new Fighter({
     position: {
         x: 100,
@@ -156,10 +170,9 @@ function animate() {
     playerOneMove()
     playerOneSlide()
     playerOneJump()
-    //playerOneDetect()
-    playerOneMiss()
+
     knightAttack()
-    rangerSpecial()
+    rangerAttack()
 
     playerTwoMove()
     playerTwoSlide()
@@ -200,6 +213,7 @@ window.addEventListener('keydown', (event) => {
             break
             case 'e':
                 knightCombos()
+                rangerCombos()
                 player.attack()
             break
             case 'f':

@@ -68,29 +68,72 @@ function knightAttack() {
 }
 
 function knightCombos() {
-    if (player.lastSprite === knightSprites.attack1) {
-        player.attackBox.width = 225
-        player.attackBox.offset.x = -60
-        player.switchSprite('attack2')
-    } else {
-        player.attackBox.width = 115
-        player.attackBox.offset.x = 45
-        player.switchSprite('attack1')
+    if (player.sprites === knightSprites) {
+        if (player.lastSprite === knightSprites.attack1) {
+            player.attackBox.width = 225
+            player.attackBox.offset.x = -60
+            player.switchSprite('attack2')
+        } else {
+            player.attackBox.width = 115
+            player.attackBox.offset.x = 45
+            player.switchSprite('attack1')
+        }
     }
 }
 
-function playerOneMiss() {
-    //if player1 misses
-    if (player.isAttacking && 
-        player.framesCurrent === 2 && 
-        player.sprites != knightSprites) {
-        player.isAttacking = false
-    }//ranger
-    else if (player.isAttacking && 
-        player.framesCurrent === 8 && 
-        player.sprites === rangerSprites) {
-        player.isAttacking = false
+function rangerAttack() {
+    if (player.sprites === rangerSprites) {
+        if (
+            rectangularCollision({
+                rectangle1: player,
+                rectangle2: enemy
+            }) &&
+            player.isAttacking &&
+            enemy.isRolling === false
+        ) {
+            if (player.lastSprite === rangerSprites.attack1 && player.framesCurrent === 4) {
+                enemy.takeHit(5)
+            }
+            else if (player.lastSprite === rangerSprites.attack2 && player.framesCurrent === 8) {
+                enemy.takeHit(5)
+                // poison.position.x = enemy.position.x - 240
+                // poison.position.y = enemy.position.y - 50
+                // poison.update()
+            }
+        }
+
+        //animate health bar damage
+        gsap.to('#enemyHealth', {
+            width: enemy.health + '%'
+        })
+
+        //if attack misses
+        if (player.isAttacking) {
+                if (player.lastSprite === rangerSprites.attack1 && player.framesCurrent === 4) {
+                    player.isAttacking = false
+                }
+                else if (player.lastSprite === rangerSprites.attack2 && player.framesCurrent === 8) {
+                    player.isAttacking = false
+                }
+            }
     }
+}
+
+function rangerCombos() {
+    if (player.sprites === rangerSprites) {
+        if (player.lastSprite === rangerSprites.attack1) {
+            player.attackBox.width = 290
+            player.switchSprite('attack2')
+        } else {
+            player.attackBox.width = 120
+            player.switchSprite('attack1')
+        }
+    }
+}
+
+function rangerPoison() {
+    poisonSprite[sprite].image = new Image()
+    poisonSprite[sprite].image.src = poisonSprite[sprite].imageSrc
 }
 
 function rangerSpecial() {

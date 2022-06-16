@@ -60,7 +60,7 @@ let rangerSprites = {
     },
     attack1: {
         imageSrc: './assets/ranger/rangerAttack1.png',
-        framesMax: 15
+        framesMax: 10
     },
     attack2: {
         imageSrc: './assets/ranger/rangerAttack2.png',

@@ -53,8 +53,6 @@ class Sprite {
     }
 }
 
-let counter = 0;
-
 class Fighter extends Sprite{
     constructor({
         position, 
