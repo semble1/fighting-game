@@ -110,6 +110,10 @@ const enemy = new Fighter({
             imageSrc: './assets/enemyknight/knightAttack2.png',
             framesMax: 6
         },
+        special: {
+            imageSrc: './assets/enemyknight/knightAttack2.png',
+            framesMax: 6
+        },
         slide: {
             imageSrc: './assets/enemyknight/knightSlide.png',
             framesMax: 2
@@ -193,6 +197,14 @@ function animate() {
     shinAttack()
     monkAttack()
 
+    attackSpecial()
+    knightSpecial()
+    rangerSpecial()
+    bladeSpecial()
+    priestSpecial()
+    shinSpecial()
+    monkSpecial()
+
     playerTwoMove()
     playerTwoSlide()
     playerTwoJump()
@@ -233,6 +245,7 @@ window.addEventListener('keydown', (event) => {
                 }
             break
             case 'e':
+                player.comboKey = 'e'
                 knightCombos()
                 rangerCombos()
                 bladeCombos()
@@ -243,6 +256,7 @@ window.addEventListener('keydown', (event) => {
             break
             case 'f':
                 keys.f.pressed = true
+                player.comboKey = 'f'
                 player.roll()
             break
         }

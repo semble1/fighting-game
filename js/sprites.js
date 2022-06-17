@@ -23,6 +23,10 @@ let knightSprites = {
         imageSrc: './assets/knight/knightAttack2.png',
         framesMax: 11
     },
+    special: {
+        imageSrc: './assets/knight/knightSpecial.png',
+        framesMax: 18
+    },
     slide: {
         imageSrc: './assets/knight/knightSlide.png',
         framesMax: 8
@@ -117,6 +121,10 @@ let bladeSprites = {
         imageSrc: './assets/blade/bladeAttack3.png',
         framesMax: 12
     },
+    special: {
+        imageSrc: './assets/blade/bladeSpecial.png',
+        framesMax: 11
+    },
     slide: {
         imageSrc: './assets/blade/bladeSlide.png',
         framesMax: 8
@@ -159,6 +167,10 @@ let priestSprites = {
     attack2: {
         imageSrc: './assets/priest/priestAttack2.png',
         framesMax: 17
+    },
+    special: {
+        imageSrc: './assets/priest/priestSpecial.png',
+        framesMax: 32
     },
     slide: {
         imageSrc: './assets/priest/priestSlide.png',
@@ -203,6 +215,10 @@ let shinSprites = {
         imageSrc: './assets/shin/shinAttack2.png',
         framesMax: 14
     },
+    special: {
+        imageSrc: './assets/shin/shinSpecial.png',
+        framesMax: 30
+    },
     slide: {
         imageSrc: './assets/shin/shinSlide.png',
         framesMax: 8
@@ -245,6 +261,10 @@ let monkSprites = {
     attack2: {
         imageSrc: './assets/monk/monkAttack2.png',
         framesMax: 7
+    },
+    special: {
+        imageSrc: './assets/monk/monkSpecial.png',
+        framesMax: 25
     },
     slide: {
         imageSrc: './assets/monk/monkSlide.png',
