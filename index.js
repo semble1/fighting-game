@@ -114,6 +114,10 @@ const enemy = new Fighter({
             imageSrc: './assets/enemyknight/knightAttack2.png',
             framesMax: 6
         },
+        air: {
+            imageSrc: './assets/enemyknight/knightAttack1.png',
+            framesMax: 4
+        },
         slide: {
             imageSrc: './assets/enemyknight/knightSlide.png',
             framesMax: 2

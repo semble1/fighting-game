@@ -57,7 +57,10 @@ function knightAttack() {
             player.isAttacking &&
             enemy.isRolling === false
         ) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                enemy.takeHit(5)
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
                 enemy.takeHit(20)
             }
             else if (player.lastSprite === knightSprites.attack1 && player.framesCurrent === 4) {
@@ -76,7 +79,10 @@ function knightAttack() {
 
         //if attack misses
         if (player.isAttacking) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                player.isAttacking = false
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
                 player.isAttacking = false
             }
             else if (player.lastSprite === knightSprites.attack1 && player.framesCurrent === 4) {
@@ -91,7 +97,12 @@ function knightAttack() {
 
 function knightCombos() {
     if (player.sprites === knightSprites) {
-        if (player.lastSprite === knightSprites.attack1) {
+        if (player.velocity.y !=0) {
+            player.attackBox.width = 175
+            player.attackBox.offset.x = 45
+            player.switchSprite('air')
+        }
+        else if (player.lastSprite === knightSprites.attack1) {
             player.attackBox.width = 225
             player.attackBox.offset.x = -60
             player.switchSprite('attack2')
@@ -142,8 +153,12 @@ function rangerAttack() {
             player.isAttacking &&
             enemy.isRolling === false
         ) {
+            //air attack
+            if (player.velocity.y != 0 && player.framesCurrent === 5) {
+                enemy.takeHit(5)
+            }
             //special
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 8) {
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 8) {
                 enemy.takeHit(20)
             }
             //basic attack
@@ -185,7 +200,10 @@ function rangerAttack() {
 
         //if attack misses
         if (player.isAttacking) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 8) {
+            if (player.velocity.y != 0 && player.framesCurrent === 5) {
+                player.isAttacking = false
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 8) {
                 player.isAttacking = false
             }
             else if (player.lastSprite === rangerSprites.attack1 && player.framesCurrent === 4) {
@@ -200,12 +218,25 @@ function rangerAttack() {
 
 function rangerCombos() {
     if (player.sprites === rangerSprites) {
-        if (player.lastSprite === rangerSprites.attack1) {
+        if (player.velocity.y !=0) {
+            player.attackBox.width = 80
+            player.attackBox.offset.x = 145
+            player.attackBox.offset.y = 100
+            player.attackBox.height = 300
+            player.switchSprite('air')
+        }
+        else if (player.lastSprite === rangerSprites.attack1) {
             player.attackBox.width = 290
+            player.attackBox.height = 50
+            player.attackBox.offset.y = 50
+            player.attackBox.offset.x = 100
             player.switchSprite('attack2')
         } 
         else {
             player.attackBox.width = 120
+            player.attackBox.height = 50
+            player.attackBox.offset.y = 50
+            player.attackBox.offset.x = 100
             player.switchSprite('attack1')
         }
     }
@@ -229,7 +260,12 @@ function bladeAttack() {
             player.isAttacking &&
             enemy.isRolling === false
         ) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 4) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                enemy.takeHit(3)
+                setTimeout(function() {enemy.takeHit(1)}, 100)
+                setTimeout(function() {enemy.takeHit(1)}, 200)
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 4) {
                 enemy.takeHit(20)
             }
             else if (player.lastSprite === bladeSprites.attack1 && player.framesCurrent === 2) {
@@ -238,7 +274,7 @@ function bladeAttack() {
             else if (player.lastSprite === bladeSprites.attack2 && player.framesCurrent === 2) {
                 enemy.takeHit(5)
             }
-            else if (player.lastSprite === bladeSprites.attack3 && player.framesCurrent === 2) {
+            else if (player.lastSprite === bladeSprites.attack3 && player.framesCurrent === 2 && player.velocity.y === 0) {
                 enemy.takeHit(5)
                 setTimeout(function() {enemy.takeHit(1)}, 200)
                 setTimeout(function() {enemy.takeHit(1)}, 300)
@@ -256,7 +292,10 @@ function bladeAttack() {
 
         //if attack misses
         if (player.isAttacking) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 4) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                player.isAttacking = false
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 4) {
                 player.isAttacking = false
             }
             else if (player.lastSprite === bladeSprites.attack1 && player.framesCurrent === 2){
@@ -265,7 +304,7 @@ function bladeAttack() {
             else if (player.lastSprite === bladeSprites.attack2 && player.framesCurrent === 2){
                 player.isAttacking = false
             }
-            else if (player.lastSprite === bladeSprites.attack3 && player.framesCurrent === 2){
+            else if (player.lastSprite === bladeSprites.attack3 && player.framesCurrent === 2 && player.velocity.y === 0){
                 player.isAttacking = false
             }
         }
@@ -274,7 +313,12 @@ function bladeAttack() {
 
 function bladeCombos() {
     if (player.sprites === bladeSprites) {
-        if (player.lastSprite === bladeSprites.attack1) {
+        if (player.velocity.y !=0) {
+            player.attackBox.width = 60
+            player.attackBox.offset.x = 140
+            player.switchSprite('air')
+        }
+        else if (player.lastSprite === bladeSprites.attack1) {
             player.attackBox.width = 90
             player.attackBox.offset.x = 50
             player.switchSprite('attack2')
@@ -311,8 +355,13 @@ function priestAttack() {
             player.isAttacking &&
             enemy.isRolling === false
         ) {
+            //air attack
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                enemy.takeHit(5)
+                enemy.velocity.x = 50
+            }
             //special
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 13) {
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 13) {
                 enemy.takeHit(15)
                 setTimeout(function() {enemy.takeHit(5)}, 700)
             }
@@ -334,7 +383,10 @@ function priestAttack() {
 
         //if attack misses
         if (player.isAttacking) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 13) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                player.isAttacking = false
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 13) {
                 player.isAttacking = false
             }
             else if (player.lastSprite === priestSprites.attack1 && player.framesCurrent === 3) {
@@ -349,7 +401,12 @@ function priestAttack() {
 
 function priestCombos() {
     if (player.sprites === priestSprites) {
-        if (player.lastSprite === priestSprites.attack1) {
+        if (player.velocity.y !=0) {
+            player.attackBox.width = 85
+            player.attackBox.offset.x = 150
+            player.switchSprite('air')
+        }
+        else if (player.lastSprite === priestSprites.attack1) {
             player.attackBox.width = 85
             player.attackBox.offset.x = 100
             player.switchSprite('attack2')
@@ -381,7 +438,10 @@ function shinAttack() {
             player.isAttacking &&
             enemy.isRolling === false
         ) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                enemy.takeHit(6)
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
                 enemy.takeHit(10)
                 setTimeout(function() {enemy.takeHit(10)}, 400)
                 setTimeout(function() {enemy.takeHit(10)}, 600)
@@ -404,7 +464,10 @@ function shinAttack() {
 
         //if attack misses
         if (player.isAttacking) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                player.isAttacking = false
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
                 player.isAttacking = false
             }
             else if (player.lastSprite === shinSprites.attack1 && player.framesCurrent === 2) {
@@ -419,7 +482,12 @@ function shinAttack() {
 
 function shinCombos() {
     if (player.sprites === shinSprites) {
-        if (player.lastSprite === shinSprites.attack1) {
+        if (player.velocity.y !=0) {
+            player.attackBox.width = 100
+            player.attackBox.offset.x = 100
+            player.switchSprite('air')
+        }
+        else if (player.lastSprite === shinSprites.attack1) {
             player.attackBox.width = 100
             player.attackBox.offset.x = 100
             player.switchSprite('attack2')
@@ -451,7 +519,10 @@ function monkAttack() {
             player.isAttacking &&
             enemy.isRolling === false
         ) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 7) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                enemy.takeHit(5)
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 7) {
                 enemy.takeHit(10)
                 setTimeout(function() {enemy.takeHit(10)}, 1000)
             }
@@ -471,7 +542,10 @@ function monkAttack() {
 
         //if attack misses
         if (player.isAttacking) {
-            if (player.lastSprite === player.sprites.special && player.framesCurrent === 7) {
+            if (player.velocity.y != 0 && player.framesCurrent === 3) {
+                player.isAttacking = false
+            }
+            else if (player.lastSprite === player.sprites.special && player.framesCurrent === 7) {
                 player.isAttacking = false
             }
             else if (player.lastSprite === monkSprites.attack1 && player.framesCurrent === 2) {
@@ -486,7 +560,12 @@ function monkAttack() {
 
 function monkCombos() {
     if (player.sprites === monkSprites) {
-        if (player.lastSprite === monkSprites.attack1) {
+        if (player.velocity.y !=0) {
+            player.attackBox.width = 150
+            player.attackBox.offset.x = -50
+            player.switchSprite('air')
+        }
+        else if (player.lastSprite === monkSprites.attack1) {
             player.attackBox.width = 10
             player.attackBox.offset.x = 80
             player.switchSprite('attack2')

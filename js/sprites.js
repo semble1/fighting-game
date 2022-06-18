@@ -27,6 +27,10 @@ let knightSprites = {
         imageSrc: './assets/knight/knightSpecial.png',
         framesMax: 18
     },
+    air: {
+        imageSrc: './assets/knight/knightAir.png',
+        framesMax: 8
+    },
     slide: {
         imageSrc: './assets/knight/knightSlide.png',
         framesMax: 8
@@ -73,6 +77,10 @@ let rangerSprites = {
     special: {
         imageSrc: './assets/ranger/rangerSpecial.png',
         framesMax: 17
+    },
+    air: {
+        imageSrc: './assets/ranger/rangerAir.png',
+        framesMax: 10
     },
     slide: {
         imageSrc: './assets/ranger/rangerSlide.png',
@@ -125,6 +133,10 @@ let bladeSprites = {
         imageSrc: './assets/blade/bladeSpecial.png',
         framesMax: 11
     },
+    air: {
+        imageSrc: './assets/blade/bladeAir.png',
+        framesMax: 8
+    },
     slide: {
         imageSrc: './assets/blade/bladeSlide.png',
         framesMax: 8
@@ -171,6 +183,10 @@ let priestSprites = {
     special: {
         imageSrc: './assets/priest/priestSpecial.png',
         framesMax: 32
+    },
+    air: {
+        imageSrc: './assets/priest/priestAir.png',
+        framesMax: 8
     },
     slide: {
         imageSrc: './assets/priest/priestSlide.png',
@@ -219,6 +235,10 @@ let shinSprites = {
         imageSrc: './assets/shin/shinSpecial.png',
         framesMax: 30
     },
+    air: {
+        imageSrc: './assets/shin/shinAir.png',
+        framesMax: 7
+    },
     slide: {
         imageSrc: './assets/shin/shinSlide.png',
         framesMax: 8
@@ -265,6 +285,10 @@ let monkSprites = {
     special: {
         imageSrc: './assets/monk/monkSpecial.png',
         framesMax: 25
+    },
+    air: {
+        imageSrc: './assets/monk/monkAir.png',
+        framesMax: 7
     },
     slide: {
         imageSrc: './assets/monk/monkSlide.png',

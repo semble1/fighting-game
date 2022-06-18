@@ -189,6 +189,7 @@ class Fighter extends Sprite{
         else if (this.image === this.sprites.roll.image && this.framesCurrent < this.sprites.roll.framesMax - 1) return
         else if (this.image === this.sprites.slide.image && this.framesCurrent < this.sprites.slide.framesMax - 1) return
         else if (this.image === this.sprites.special.image && this.framesCurrent < this.sprites.special.framesMax - 1) return
+        else if (this.image === this.sprites.air.image && this.framesCurrent < this.sprites.air.framesMax - 1) return
         else if (this.sprites === bladeSprites && this.image === this.sprites.attack3.image && this.framesCurrent < this.sprites.attack3.framesMax - 1) return
         else if (this.image === this.sprites.takeHit.image && this.framesCurrent < this.sprites.takeHit.framesMax - 1) return
 
@@ -257,6 +258,14 @@ class Fighter extends Sprite{
                     this.image = this.sprites.special.image
                     this.framesMax = this.sprites.special.framesMax
                     //this.framesHold = this.sprites.special.framesHold
+                    this.framesCurrent = 0
+                }
+                break
+            case 'air':
+                if (this.image !== this.sprites.air.image) {
+                    this.image = this.sprites.air.image
+                    this.framesMax = this.sprites.air.framesMax
+                    //this.framesHold = this.sprites.air.framesHold
                     this.framesCurrent = 0
                 }
                 break
