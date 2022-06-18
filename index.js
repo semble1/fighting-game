@@ -245,7 +245,6 @@ window.addEventListener('keydown', (event) => {
                 }
             break
             case 'e':
-                player.comboKey = 'e'
                 knightCombos()
                 rangerCombos()
                 bladeCombos()

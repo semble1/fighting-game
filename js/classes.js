@@ -90,7 +90,7 @@ class Fighter extends Sprite{
         }
         this.color = color
         this.isAttacking
-        this.specialAttack
+        this.specialAttack = 0
         this.lastSprite
         this.isRolling = false
         this.health = 100

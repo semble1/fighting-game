@@ -36,10 +36,14 @@ function playerOneJump() {
 
 function attackSpecial() {
     if (keys.s.pressed && player.comboKey === 'a') {
-        player.isAttacking = true
-        player.lastSprite = player.sprites.special
-        player.switchSprite('special')
-        player.comboKey = 'e'
+        player.specialAttack++
+        if (player.specialAttack < 4) {
+            player.isAttacking = true
+            player.lastSprite = player.sprites.special
+            player.switchSprite('special')
+            player.comboKey = 'e'
+        }
+        else {return}
     }
 }
 
