@@ -130,6 +130,10 @@ const enemy = new Fighter({
             imageSrc: './assets/enemyknight/knightTakeHit.png',
             framesMax: 3
         },
+        defend: {
+            imageSrc: './assets/enemyknight/knightTakeHit.png',
+            framesMax: 3
+        },
         death: {
             imageSrc: './assets/enemyknight/knightDeath.png',
             framesMax: 10

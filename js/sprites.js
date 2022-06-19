@@ -43,6 +43,10 @@ let knightSprites = {
         imageSrc: './assets/knight/knightTakeHit.png',
         framesMax: 6
     },
+    defend: {
+        imageSrc: './assets/knight/knightDefend.png',
+        framesMax: 10
+    },
     death: {
         imageSrc: './assets/knight/knightDeath.png',
         framesMax: 13
@@ -93,6 +97,10 @@ let rangerSprites = {
     takeHit: {
         imageSrc: './assets/ranger/rangerTakeHit.png',
         framesMax: 6
+    },
+    defend: {
+        imageSrc: './assets/ranger/rangerDefend.png',
+        framesMax: 19
     },
     death: {
         imageSrc: './assets/ranger/rangerDeath.png',
@@ -149,6 +157,10 @@ let bladeSprites = {
         imageSrc: './assets/blade/bladeTakeHit.png',
         framesMax: 6
     },
+    defend: {
+        imageSrc: './assets/blade/bladeDefend.png',
+        framesMax: 12
+    },
     death: {
         imageSrc: './assets/blade/bladeDeath.png',
         framesMax: 12
@@ -199,6 +211,10 @@ let priestSprites = {
     takeHit: {
         imageSrc: './assets/priest/priestTakeHit.png',
         framesMax: 7
+    },
+    defend: {
+        imageSrc: './assets/priest/priestDefend.png',
+        framesMax: 12
     },
     death: {
         imageSrc: './assets/priest/priestDeath.png',
@@ -251,6 +267,10 @@ let shinSprites = {
         imageSrc: './assets/shin/shinTakeHit.png',
         framesMax: 6
     },
+    defend: {
+        imageSrc: './assets/shin/shinDefend.png',
+        framesMax: 8
+    },
     death: {
         imageSrc: './assets/shin/shinDeath.png',
         framesMax: 19
@@ -301,6 +321,10 @@ let monkSprites = {
     takeHit: {
         imageSrc: './assets/monk/monkTakeHit.png',
         framesMax: 6
+    },
+    defend: {
+        imageSrc: './assets/monk/monkDefend.png',
+        framesMax: 13
     },
     death: {
         imageSrc: './assets/monk/monkDeath.png',
