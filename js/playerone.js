@@ -38,10 +38,22 @@ function attackSpecial() {
     if (keys.s.pressed && player.comboKey === 'a' && player.velocity.y === 0) {
         player.specialAttack++
         if (player.specialAttack < 4) {
+            keys.d.pressed = false
+            player.stuck = true
             player.isAttacking = true
             player.lastSprite = player.sprites.special
             player.switchSprite('special')
             player.comboKey = 'e'
+            if (player.sprites === bladeSprites) {
+                setTimeout(function() {player.stuck = false}, 800)
+            }
+            else if (player.sprites === priestSprites || player.sprites === shinSprites) {
+                setTimeout(function() {player.stuck = false}, 2500)
+            }
+            else if (player.sprites === monkSprites) {
+                setTimeout(function() {player.stuck = false}, 1800)
+            }
+            else {setTimeout(function() {player.stuck = false}, 1200)}
         }
         else {return}
     }

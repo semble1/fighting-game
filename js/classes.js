@@ -94,6 +94,7 @@ class Fighter extends Sprite{
         this.specialAttack = 0
         this.lastSprite
         this.isRolling = false
+        this.isDefending = false
         this.health = 100
         this.framesCurrent = 0
         this.framesElapsed = 0
@@ -165,6 +166,40 @@ class Fighter extends Sprite{
         }, 550)
     }
 
+    defend() {
+        setTimeout(() => {
+            this.isDefending = true
+        }, 20)
+
+        this.switchSprite('defend')
+
+        if (this.sprites === monkSprites) {
+            setTimeout(() => {
+                this.isDefending = false
+            }, 850)
+        }
+        else if (this.sprites === shinSprites) {
+            setTimeout(() => {
+                this.isDefending = false
+            }, 500)
+        }
+        else if (this.sprites === rangerSprites) {
+            setTimeout(() => {
+                this.isDefending = false
+            }, 1350)
+        }
+        else if (this.sprites === priestSprites || this.sprites === bladeSprites) {
+            setTimeout(() => {
+                this.isDefending = false
+            }, 800)
+        }
+        else {
+            setTimeout(() => {
+                this.isDefending = false
+            }, 700)
+        }
+    }
+
     takeHit(dmg = 10) {
         this.health -= dmg
         hit.play()
@@ -185,15 +220,16 @@ class Fighter extends Sprite{
             }
             return
         }
+        else if (this.image === this.sprites.takeHit.image && this.framesCurrent < this.sprites.takeHit.framesMax - 1) return
         else if (this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax - 1) return
         else if (this.image === this.sprites.attack2.image && this.framesCurrent < this.sprites.attack2.framesMax - 1) return
+        else if (this.image === this.sprites.defend.image && this.framesCurrent < this.sprites.defend.framesMax - 1) return
         else if (this.image === this.sprites.roll.image && this.framesCurrent < this.sprites.roll.framesMax - 1) return
         else if (this.image === this.sprites.slide.image && this.framesCurrent < this.sprites.slide.framesMax - 1) return
         else if (this.image === this.sprites.special.image && this.framesCurrent < this.sprites.special.framesMax - 1) return
         else if (this.image === this.sprites.defend.image && this.framesCurrent < this.sprites.defend.framesMax - 1) return
         else if (this.image === this.sprites.air.image && this.framesCurrent < this.sprites.air.framesMax - 1) return
         else if (this.sprites === bladeSprites && this.image === this.sprites.attack3.image && this.framesCurrent < this.sprites.attack3.framesMax - 1) return
-        else if (this.image === this.sprites.takeHit.image && this.framesCurrent < this.sprites.takeHit.framesMax - 1) return
 
         switch (sprite) {
             case 'idle':
