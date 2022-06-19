@@ -130,6 +130,10 @@ const enemy = new Fighter({
             imageSrc: './assets/enemyknight/knightTakeHit.png',
             framesMax: 3
         },
+        defend: {
+            imageSrc: './assets/enemyknight/knightDefend.png',
+            framesMax: 3
+        },
         death: {
             imageSrc: './assets/enemyknight/knightDeath.png',
             framesMax: 10
@@ -266,6 +270,10 @@ window.addEventListener('keydown', (event) => {
                     player.comboKey = 'f'
                     player.roll()
                 break
+                case 'q':
+                    keys.q.pressed = true
+                    player.defend()
+                break
             }
         }
     }
@@ -294,6 +302,7 @@ window.addEventListener('keydown', (event) => {
                     }
                 break
                 case 'u':
+                    enemy.switchSprite('attack1')
                     enemy.attack()
                 break
                 case 'h':

@@ -40,9 +40,10 @@ function playerTwoDetect() {
         }) && 
         enemy.isAttacking && 
         enemy.framesCurrent === 2 &&
-        player.isRolling === false) 
+        player.isRolling === false &&
+        player.isDefending === false) 
         {
-        player.takeHit()
+        player.takeHit(10)
 
         //animate health bar damage
         gsap.to('#playerHealth', {
