@@ -35,7 +35,7 @@ function playerOneJump() {
 }
 
 function attackSpecial() {
-    if (keys.s.pressed && player.comboKey === 'a') {
+    if (keys.s.pressed && player.comboKey === 'a' && player.velocity.y === 0) {
         player.specialAttack++
         if (player.specialAttack < 4) {
             player.isAttacking = true
@@ -61,7 +61,14 @@ function knightAttack() {
                 enemy.takeHit(5)
             }
             else if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
+                enemy.stuck = true
                 enemy.takeHit(20)
+                setTimeout(function() {enemy.takeHit(1)}, 700)
+                setTimeout(function() {enemy.takeHit(1)}, 1400)
+                setTimeout(function() {enemy.takeHit(1)}, 2100)
+                setTimeout(function() {enemy.takeHit(1)}, 2800)
+                setTimeout(function() {enemy.takeHit(1)}, 3500)
+                setTimeout(function() {enemy.stuck = false}, 100)
             }
             else if (player.lastSprite === knightSprites.attack1 && player.framesCurrent === 4) {
                 enemy.takeHit(5)
@@ -159,7 +166,9 @@ function rangerAttack() {
             }
             //special
             else if (player.lastSprite === player.sprites.special && player.framesCurrent === 8) {
+                enemy.stuck = true
                 enemy.takeHit(20)
+                setTimeout(function() {enemy.stuck = false}, 100)
             }
             //basic attack
             else if (player.lastSprite === rangerSprites.attack1 && player.framesCurrent === 4) {
@@ -266,7 +275,9 @@ function bladeAttack() {
                 setTimeout(function() {enemy.takeHit(1)}, 200)
             }
             else if (player.lastSprite === player.sprites.special && player.framesCurrent === 4) {
+                enemy.stuck = true
                 enemy.takeHit(20)
+                setTimeout(function() {enemy.stuck = false}, 500)
             }
             else if (player.lastSprite === bladeSprites.attack1 && player.framesCurrent === 2) {
                 enemy.takeHit(5)
@@ -362,8 +373,10 @@ function priestAttack() {
             }
             //special
             else if (player.lastSprite === player.sprites.special && player.framesCurrent === 13) {
+                enemy.stuck = true
                 enemy.takeHit(15)
                 setTimeout(function() {enemy.takeHit(5)}, 700)
+                setTimeout(function() {enemy.stuck = false}, 1000)
             }
             //basic attack
             else if (player.lastSprite === priestSprites.attack1 && player.framesCurrent === 3) {
@@ -442,9 +455,11 @@ function shinAttack() {
                 enemy.takeHit(6)
             }
             else if (player.lastSprite === player.sprites.special && player.framesCurrent === 12) {
+                enemy.stuck = true
                 enemy.takeHit(10)
                 setTimeout(function() {enemy.takeHit(10)}, 400)
                 setTimeout(function() {enemy.takeHit(10)}, 600)
+                setTimeout(function() {enemy.stuck = false}, 1000)
 
             }
             else if (player.lastSprite === shinSprites.attack1 && player.framesCurrent === 2) {
@@ -523,8 +538,10 @@ function monkAttack() {
                 enemy.takeHit(5)
             }
             else if (player.lastSprite === player.sprites.special && player.framesCurrent === 7) {
+                enemy.stuck = true
                 enemy.takeHit(10)
                 setTimeout(function() {enemy.takeHit(10)}, 1000)
+                setTimeout(function() {enemy.stuck = false}, 1500)
             }
             if (player.lastSprite === monkSprites.attack1 && player.framesCurrent === 2) {
                 enemy.takeHit(5)

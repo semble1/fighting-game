@@ -266,33 +266,35 @@ window.addEventListener('keydown', (event) => {
     }
 
     if (!enemy.dead) {
-        switch (event.key) {
-            case 'l':
-                keys.l.pressed = true
-                enemy.lastKey = 'l'
-            break
-            case 'j':
-                keys.j.pressed = true
-                enemy.lastKey = 'j'
-            break
-            case 'k':
-                keys.k.pressed = true
-            break
-            case 'i':
-                if (enemy.velocity.y != 0) {
-                    return
-                }
-                else {
-                    enemy.velocity.y = -20
-                    jump.play()
-                }
-            break
-            case 'u':
-                enemy.attack()
-            break
-            case 'h':
-                enemy.roll()
-            break
+        if (!enemy.stuck) {
+            switch (event.key) {
+                case 'l':
+                    keys.l.pressed = true
+                    enemy.lastKey = 'l'
+                break
+                case 'j':
+                    keys.j.pressed = true
+                    enemy.lastKey = 'j'
+                break
+                case 'k':
+                    keys.k.pressed = true
+                break
+                case 'i':
+                    if (enemy.velocity.y != 0) {
+                        return
+                    }
+                    else {
+                        enemy.velocity.y = -20
+                        jump.play()
+                    }
+                break
+                case 'u':
+                    enemy.attack()
+                break
+                case 'h':
+                    enemy.roll()
+                break
+            }
         }
     }
 })
