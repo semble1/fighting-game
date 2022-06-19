@@ -158,6 +158,9 @@ const keys = {
     e: {
         pressed: false
     },
+    q: {
+        pressed: false
+    },
     f: {
         pressed: false
     },
@@ -225,43 +228,45 @@ backgroundAnimate()
 
 window.addEventListener('keydown', (event) => {
     if (!player.dead) {
-        switch (event.key) {
-            case 'd':
-                keys.d.pressed = true
-                player.lastKey = 'd'
-            break
-            case 'a':
-                keys.a.pressed = true
-                player.lastKey = 'a'
-                player.comboKey = 'a'
-            break
-            case 's':
-                keys.s.pressed = true
-            break
-            case 'w':
-                if (player.velocity.y != 0) {
-                    return
-                }
-                else {
-                    player.velocity.y = -20
-                    player.comboKey = 'w'
-                    jump.play()
-                }
-            break
-            case 'e':
-                knightCombos()
-                rangerCombos()
-                bladeCombos()
-                priestCombos()
-                shinCombos()
-                monkCombos()
-                player.attack()
-            break
-            case 'f':
-                keys.f.pressed = true
-                player.comboKey = 'f'
-                player.roll()
-            break
+        if (!player.stuck) {
+            switch (event.key) {
+                case 'd':
+                    keys.d.pressed = true
+                    player.lastKey = 'd'
+                break
+                case 'a':
+                    keys.a.pressed = true
+                    player.lastKey = 'a'
+                    player.comboKey = 'a'
+                break
+                case 's':
+                    keys.s.pressed = true
+                break
+                case 'w':
+                    if (player.velocity.y != 0) {
+                        return
+                    }
+                    else {
+                        player.velocity.y = -20
+                        player.comboKey = 'w'
+                        jump.play()
+                    }
+                break
+                case 'e':
+                    knightCombos()
+                    rangerCombos()
+                    bladeCombos()
+                    priestCombos()
+                    shinCombos()
+                    monkCombos()
+                    player.attack()
+                break
+                case 'f':
+                    keys.f.pressed = true
+                    player.comboKey = 'f'
+                    player.roll()
+                break
+            }
         }
     }
 
