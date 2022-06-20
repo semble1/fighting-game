@@ -272,6 +272,8 @@ window.addEventListener('keydown', (event) => {
                 break
                 case 'q':
                     keys.q.pressed = true
+                    player.comboKey = 'q'
+                    //parryAttack()
                     player.defend()
                 break
             }
@@ -302,6 +304,7 @@ window.addEventListener('keydown', (event) => {
                     }
                 break
                 case 'u':
+                    enemy.isParryable = true
                     enemy.switchSprite('attack1')
                     enemy.attack()
                 break

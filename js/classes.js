@@ -79,6 +79,7 @@ class Fighter extends Sprite{
         this.height = 150
         this.lastKey
         this.comboKey
+        this.isParryable = false
         this.stuck = false
         this.attackBox = {
             position: {
@@ -120,7 +121,7 @@ class Fighter extends Sprite{
         this.attackBox.position.y = this.position.y + this.attackBox.offset.y
 
         //draw attack boxes
-        ctx.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+        //ctx.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
 
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
@@ -167,6 +168,9 @@ class Fighter extends Sprite{
     }
 
     defend() {
+        keys.d.pressed = false
+        keys.a.pressed = false
+        this.stuck = true
         setTimeout(() => {
             this.isDefending = true
         }, 20)
@@ -177,25 +181,40 @@ class Fighter extends Sprite{
             setTimeout(() => {
                 this.isDefending = false
             }, 850)
+            setTimeout(() => {
+                this.stuck = false
+            }, 850)
         }
         else if (this.sprites === shinSprites) {
             setTimeout(() => {
                 this.isDefending = false
+            }, 500)
+            setTimeout(() => {
+                this.stuck = false
             }, 500)
         }
         else if (this.sprites === rangerSprites) {
             setTimeout(() => {
                 this.isDefending = false
             }, 1350)
+            setTimeout(() => {
+                this.stuck = false
+            }, 1350)
         }
         else if (this.sprites === priestSprites || this.sprites === bladeSprites) {
             setTimeout(() => {
                 this.isDefending = false
             }, 800)
+            setTimeout(() => {
+                this.stuck = false
+            }, 800)
         }
         else {
             setTimeout(() => {
                 this.isDefending = false
+            }, 700)
+            setTimeout(() => {
+                this.stuck = false
             }, 700)
         }
     }

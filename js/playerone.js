@@ -59,6 +59,12 @@ function attackSpecial() {
     }
 }
 
+function parryAttack() {
+    if (player.comboKey === 'q' && enemy.isParryable) {
+        player.switchSprite('special')
+    }
+}
+
 function knightAttack() {
     if (player.sprites === knightSprites) {
         if (
