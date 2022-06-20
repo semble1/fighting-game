@@ -32,8 +32,8 @@ function playerTwoJump() {
 }
 
 function playerTwoDetect() {
-     //detect for collisions & player 1 gets hit
-     if (
+    //detect for collisions & player 1 gets hit
+    if (
         rectangularCollision({
             rectangle1: enemy,
             rectangle2: player
@@ -41,9 +41,9 @@ function playerTwoDetect() {
         enemy.isAttacking && 
         enemy.framesCurrent === 2 &&
         player.isRolling === false &&
-        player.isDefending === false) 
+        player.isDefending === false)
         {
-        player.takeHit(10)
+        player.takeHit(5)
 
         //animate health bar damage
         gsap.to('#playerHealth', {
